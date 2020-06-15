@@ -4,9 +4,22 @@ import axios from 'axios';
 import Root from './components/root.jsx';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
+import 'normalize.css';
 
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+// import {
+ 
+// } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser
+} from '@fortawesome/free-regular-svg-icons';
+
+library.add(fab, faUser);
+
 
 // import App from './App';
 
