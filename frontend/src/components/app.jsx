@@ -10,7 +10,6 @@ const App = () => (
     <ModalContainer />
     <Switch>
       <Route exact path="/" component={SplashContainer} />
-      {/* <AuthRoute exact path="/" component={ModalContainer} /> */}
     </Switch>
   </div>
 );
