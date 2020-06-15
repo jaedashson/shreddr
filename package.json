@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon app.js",
+    "server:debug": "nodemon --inspect app.js",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
