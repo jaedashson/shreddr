@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import '../../stylesheets/signup.scss';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -55,10 +56,12 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    // fname, lname, dob, gender, pw twice?, email 
+
     return (
-      <div className="login-form-container">
+      <div className="signup-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div className="login-form">
+          <div className="signup-form">
             <br />
             <input type="text"
               value={this.state.email}

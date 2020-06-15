@@ -8,47 +8,95 @@ section.splash {
     align-items: center;
     height: 70px;
     width: 100%;
-    border: 1px solid lightblue;
-    // margin: 0 60px;
 
     span {
       font-family: Bebas Neue;
       font-size: 40px;
       padding: 0 0 0 60px;
+      cursor: pointer;
+    }
+
+    div.center {
+      display: flex;
+      flex-direction: row;
+
+      div.border {
+        height: 36px;
+        border-left: 1px solid darkgrey;
+        margin: 0px 20px;
+      }
+
+      span {
+        font-size: 30px;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      span:first-child {
+        border: none;
+      }
+
+      span:hover {
+        border-bottom: 3px solid darkgrey;
+      }
     }
 
     div.btns {
       display: flex;
       flex-direction: row;
-      padding: 0 60px;
+      padding: 0 60px 0 0;
 
       button {
-        background-color: #FA824C;
+        background-color: #264653;
         display: flex;
         align-items: center;
         justify-content: center;
         border: none;
         border-radius: 4px;
         color: white;
-        height: 30px;
+        height: 40px;
         margin-left: 10px;
 
         span.btn-text {
           font-family: Bebas Neue;
           font-size: 22px;
-          padding: 4px 10px;
+          padding: 4px 10px 4px 16px;
         }
 
         .fa-user {
           font-size: 16px; 
           position: relative;
           bottom: 1px;
-          left: 2px;
-          // color: black;
+          left: 8px;
         }
+      }
+    }
+  }
+
+  section.splash-main {
+    
+    div.row-1 {
+      background-image: url("../images/conquer.png");
+      height: 700px;
+      text-align: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+
+      span {
+        display: block;
+
       }
     }
   }
 }
 
 
+
+button:hover {
+  cursor: pointer;
+}
+// button:focus {
+//   border: none;
+// }
