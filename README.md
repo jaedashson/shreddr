@@ -39,10 +39,10 @@ Because of COVID-19 related quarantines throughout the world, gyms are closed an
 
 ## Group Members and Work Breakdown
 
-**Jae-Son Song** - team lead
-**Tiffany Chin** - front end
-**Eric Lee** - back end
-**Jesse Lin** - flex
+* Jae-Son Song - team lead
+* Tiffany Chin - front end
+* Eric Lee - back end
+* Jesse Lin - flex
 
 ### Day 1
 * Back end auth - Eric, Jae-Son
