@@ -16,6 +16,10 @@ section.splash {
       cursor: pointer;
     }
 
+    span.link {
+      color: black;
+    }
+
     div.center {
       display: flex;
       flex-direction: row;
@@ -60,7 +64,7 @@ section.splash {
         span.btn-text {
           font-family: Bebas Neue;
           font-size: 22px;
-          padding: 4px 10px 4px 16px;
+          padding: 4px 10px;
         }
 
         .fa-user {

@@ -1,5 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import {
+  withRouter,
+  Link
+} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navbar extends React.Component {
@@ -34,7 +37,10 @@ class Navbar extends React.Component {
     return (
       <section className="splash">
         <div className="splash-nav">
-          <span>Shreddr</span>
+          <Link to='/'
+            style={{ textDecoration: 'none' }}>
+            <span className="link">Shreddr</span>
+          </Link>
 
           <div className="center">
             <span>Training</span>
@@ -49,11 +55,6 @@ class Navbar extends React.Component {
           </div>
 
         </div>
-
-        <section className="splash-main">
-          <div className="row-1"></div>
-        </section>
-
       </section>
     )
   }

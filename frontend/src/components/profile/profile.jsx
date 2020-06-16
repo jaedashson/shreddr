@@ -26,28 +26,6 @@ class Profile extends React.Component {
 
     return(
       <section className="profile">
-        <div className="splash-nav">
-          <Link to='/'
-            style={{ textDecoration: 'none' }}>
-          <span className="link">Shreddr</span>
-          </Link>
-
-          <div className="center">
-            <span>Training</span>
-            <div className="border"></div>
-            <span>Gym Finder</span>
-            <div className="border"></div>
-            <span>Forum</span>
-          </div>
-
-          <div className="btns">
-            <button>
-              <span className="btn-text"
-                onClick={() => logout()}
-                >Logout</span>
-            </button>
-          </div>
-        </div>
         <div className="profile-nav">
           <div>
             <span>Member Profile</span>
