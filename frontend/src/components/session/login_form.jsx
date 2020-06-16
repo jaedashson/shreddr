@@ -54,6 +54,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    const { openModal } = this.props;
+
     return (
       <div className="login-form-container">
         <span className="login">Welcome Back!</span>
@@ -73,6 +75,12 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <div className="signup-here">
+          <span>Don't have an account? Sign up </span>
+          <span className="btn"
+            onClick={() => openModal('signup')}>here</span>
+          <span>.</span>
+        </div>
       </div>
     );
   }

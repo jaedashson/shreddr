@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
 
 div.login-form-container {
-  height: 230px;
+  height: 250px;
   width: 500px;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -19,8 +19,9 @@ div.login-form-container {
     div.login-form {
       display: flex;
       flex-direction: column;
-      width: 500px;
+      // width: 500px;
       padding: 0 100px;
+      margin: 0 0 -44px 0;
 
       input, button {
         height: 30px;
@@ -31,10 +32,26 @@ div.login-form-container {
         border: 1px solid #000000;
       }
 
+      input {
+        padding: 0 0 0 4px;
+      }
+
       button {
         width: 306px;
       }
     }
   }
 
+  div.signup-here {
+    margin: 4px 100px;
+
+    span.btn {
+      color: blue;
+    }
+    
+    span.btn:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }

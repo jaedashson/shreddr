@@ -35,10 +35,15 @@ div.signup-form-container {
         height: 30px;
         width: 300px;
         margin: 0 0 14px 0;
+        padding: 0 0 0 4px;
         font-family: Montserrat;
         border-radius: 3px;
         border: 1px solid #000000;
       }
+
+      // input::placeholder {
+      //   padding: 0 0 0 4px;
+      // }
 
       div.dob {
         font-family: Montserrat;
