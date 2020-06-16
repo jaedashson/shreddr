@@ -19,20 +19,17 @@ class SignupForm extends React.Component {
       password2: '',
       dob: `${this.year}-${this.month}-${this.day}`,
       gender: '',
-      errors: {}
+      errors: this.props.errors,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.signedIn === true) {
-  //     this.props.history.push('/login');
-  //   }
-
-  //   this.setState({ errors: nextProps.errors })
-  // }
+  componentDidUpdate(prevProp) {
+    if(prevProp.errors !== this.props.errors) {
+      this.setState({errors: this.props.errors});
+    }
+  }
 
   update(field) {
     return e => this.setState({
@@ -55,32 +52,19 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
     let user = {
       email: this.state.email,
       fName: this.state.fName,
       lName: this.state.lName,
       dob: this.state.dob,
-      gender: "M",
-      // gender: this.state.gender,
+      gender: this.state.gender,
       password: this.state.password,
-      // password2: this.state.password2
+      password2: this.state.password2
     };
 
-    this.props.signup(user);
-    this.props.closeModal();
-  }
+    this.props.signup(user).then(() => this.props.closeModal()).catch( () => this.props.openModal('signup'));
 
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
+    // this.props.closeModal();
   }
 
   render() {
@@ -118,86 +102,96 @@ class SignupForm extends React.Component {
           <div className="signup-form">
             <div className="signup-r1">
               <input type="text"
-                className="signup-names"
+                className={Object.keys(this.state.errors).includes('fName') ? "signup-names error-border" : "signup-names" }
                 value={this.state.fName}
                 onChange={this.update('fName')}
                 placeholder="First name"
               />
               <input type="text"
-                className="signup-names"
+                className={Object.keys(this.state.errors).includes('lName') ? "signup-names error-border" : "signup-names" }
                 value={this.state.lName}
                 onChange={this.update('lName')}
                 placeholder="Last name"
               />
             </div>
+            <div className={Object.keys(this.state.errors).includes('fName') || Object.keys(this.state.errors).includes('lName') ? "signup-errors" : "signup-errors hidden"}>What's your name?</div>
 
             <input type="text"
+              className={Object.keys(this.state.errors).includes('email') ? "error-border" : ""}
               value={this.state.email}
               onChange={this.update('email')}
               placeholder="Email"
             />
+            <div className={Object.keys(this.state.errors).includes('email') ? "signup-errors" : "signup-errors hidden"}>Please enter a valid email.</div>
 
             <input type="password"
+              className={Object.keys(this.state.errors).includes('password') ? "error-border" : ""}
               value={this.state.password}
               onChange={this.update('password')}
               placeholder="Password"
             />
+            <div className={Object.keys(this.state.errors).includes('password') ? "signup-errors" : "signup-errors hidden"}>Password must be at least 6 characters.</div>
+
             <input type="password"
+              className={Object.keys(this.state.errors).includes('password2') ? "error-border" : ""}
               value={this.state.password2}
               onChange={this.update('password2')}
               placeholder="Confirm Password"
             />
+            <div className={Object.keys(this.state.errors).includes('password2') ? "signup-errors" : "signup-errors hidden"}>Password must match.</div>
 
             <div className="gender">
               <span>Sex:</span>
-              <br/>
-              <label>
+              <div className="gender-wrapper">
                 <input type="radio"
                   value="Female"
-                  onClick={this.update('gender')}/> Female
-              </label>
+                  name={this.state.gender}
+                  onClick={this.update('gender')} /> 
+                <label> Female </label>
 
-              <label>
                 <input type="radio"
-                  value="Male" 
-                  onClick={this.update('gender')}/> Male
-              </label>
+                  value="Male"
+                  name={this.state.gender}
+                  onClick={this.update('gender')} /> 
+                <label> Male </label>
+              </div>
             </div>
-  
+            <div className={Object.keys(this.state.errors).includes('gender') ? "signup-errors" : "signup-errors hidden"}>Please select a sex.</div>
+
             <div className="dob">
-              <span>Date of Birth:</span>
-              <br/>
-              <select
-                name={this.state.month}
-                className="signup-month"
-                onChange={this.updateDob("month")}
-                value={this.state.dob.split('-')[1]}
-              >
-                {birthdayMonths}
-              </select>
+              <span className="dob-text">Date of Birth:</span>
+              <div className="dob-r2">
+                <select
+                  name={this.state.month}
+                  className="signup-month"
+                  onChange={this.updateDob("month")}
+                  value={this.state.dob.split('-')[1]}
+                >
+                  {birthdayMonths}
+                </select>
 
-              <select
-                name={this.state.day}
-                className="signup-day"
-                onChange={this.updateDob("day")}
-                value={this.state.dob.split('-')[2]}
-              >
-                {birthdayDays}
-              </select>
+                <select
+                  name={this.state.day}
+                  className="signup-day"
+                  onChange={this.updateDob("day")}
+                  value={this.state.dob.split('-')[2]}
+                >
+                  {birthdayDays}
+                </select>
 
-              <select
-                name={this.state.day}
-                className="signup-year"
-                onChange={this.updateDob("year")}
-                value={this.state.dob.split('-')[0]}
-              >
-                {birthdayYears}
-              </select>
+                <select
+                  name={this.state.day}
+                  className="signup-year"
+                  onChange={this.updateDob("year")}
+                  value={this.state.dob.split('-')[0]}
+                >
+                  {birthdayYears}
+                </select>
+              </div>  
             </div>
           </div>
           <button className="signup"
             onClick={this.handleSubmit}>Sign Up</button>
-          {/* {this.renderErrors()} */}
         </form>
 
         <div className="login-here">
