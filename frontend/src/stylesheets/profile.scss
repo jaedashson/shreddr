@@ -79,7 +79,6 @@ section.profile {
   div.profile-nav {
     background-color: grey;
     display: flex;
-    // justify-content: center;
     align-items: center;
     height: 34px;
     
@@ -91,7 +90,6 @@ section.profile {
         color: white;
         font-family: Bebas Neue;
         font-size: 24px;
-        // padding: 0 0 0 60px;
       }
     }
 
@@ -99,7 +97,6 @@ section.profile {
 
   section.main {
     height: 300px;
-    // border-bottom: 2px solid black;
     font-family: Bebas Neue;
 
     div.row-1-container {
@@ -110,9 +107,10 @@ section.profile {
         display: flex;
         flex-direction: row;
         margin: auto;
-        width: 900px;
+        width: 898px;
         height: 300px;
         border-left: 1px solid black;
+        border-right: 1px solid black;
         
         div.left {
           display: flex;
@@ -135,7 +133,7 @@ section.profile {
             div {
               display: flex;
               justify-content: center;
-              span.name {
+              span {
                 color: #000;
                 // font-family: Bebas Neue;
                 font-size: 20px;
@@ -174,11 +172,27 @@ section.profile {
           }
         }
 
-        div.line {
-          height: 300px;
-          border-left: 1px solid black;
-          position: relative;
-          left: -1px;
+        // div.line {
+        //   height: 300px;
+        //   border-left: 1px solid black;
+        // }
+      }
+    }
+
+    div.update-container {
+      height: 140px;
+      width: 100%;
+
+      div.update {
+        border: 1px solid black;
+        border-top: 2px solid black;
+        display: flex;
+        height: 100%;
+        margin: auto;
+        width: 898px;
+
+        div.update-weight, div.upload-photos {
+          width: 50%;
         }
       }
     }
@@ -191,14 +205,14 @@ section.profile {
         height: 100%;
         margin: auto;
         width: 900px;
-
+        
         div.banner {
           background-color: #A4303F;
+          border-left: 1px solid #A4303F;
           display: flex;
           align-items: center;
           justify-content: center;
           height: 40px;
-          // margin: 2px 0 0 0;
 
           span {
             color: white;
@@ -206,6 +220,17 @@ section.profile {
             font-size: 24px;
             cursor: pointer;
           }
+        }
+      }
+
+      div.chart-container {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        height: 400px;
+
+        .weight-chart {
+          // margin: auto;
+          padding-top: 40px;
         }
       }
     }

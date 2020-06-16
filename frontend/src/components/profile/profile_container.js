@@ -5,6 +5,7 @@ import Profile from './profile.jsx';
 
 const mapStateToProps = (state, ownProps) => ({
   // user: state.entities.users[ownProps.match.params.userId]
+  isAuthenticated: state.session.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({
