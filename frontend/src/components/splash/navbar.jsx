@@ -1,15 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../stylesheets/splash.scss';
-import Navbar from './navbar.jsx';
 
-class Splash extends React.Component {
+class Navbar extends React.Component {
   constructor(props) {
     super(props);
-
   }
- 
+
   render() {
     const { openModal, isAuthenticated, logout } = this.props;
 
@@ -58,8 +55,8 @@ class Splash extends React.Component {
         </section>
 
       </section>
-    ) 
+    )
   }
 };
 
-export default withRouter(Splash);
+export default withRouter(Navbar);
