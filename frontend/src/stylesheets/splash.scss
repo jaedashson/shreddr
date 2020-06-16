@@ -27,8 +27,8 @@ section.splash {
       }
 
       span {
-        font-size: 30px;
         cursor: pointer;
+        font-size: 30px;
         padding: 0;
       }
 
@@ -37,7 +37,7 @@ section.splash {
       }
 
       span:hover {
-        border-bottom: 3px solid #264653;
+        border-bottom: 3px solid #A4303F;
       }
     }
 
@@ -47,7 +47,7 @@ section.splash {
       padding: 0 60px 0 0;
 
       button {
-        background-color: #264653;
+        background-color: #A4303F;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -86,17 +86,15 @@ section.splash {
 
       span {
         display: block;
-
       }
     }
   }
 }
 
 
-
 button:hover {
   cursor: pointer;
 }
-// button:focus {
-//   border: none;
-// }
+button:focus {
+  outline: 0;
+}

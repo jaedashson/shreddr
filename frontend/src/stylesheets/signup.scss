@@ -1,6 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
+
 div.signup-form-container {
-  height: 500px;
+  height: 420px;
   width: 500px;
-  background-color: #F0F2F5;
-  border-radius: 14px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+
+  span.signup {
+    display: block;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 500;
+  }
+  form {
+
+    div.signup-form {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      padding: 0 100px;
+
+      .signup-r1 {
+        display: flex;
+
+        .signup-names {
+          width: 142px;
+          margin-right: 10px;
+        }        
+      }
+
+      input {
+        height: 30px;
+        width: 300px;
+        margin: 0 0 14px 0;
+        font-family: Montserrat;
+        border-radius: 3px;
+        border: 1px solid #000000;
+      }
+
+      div.dob {
+        font-family: Montserrat;
+        font-size: 16px;
+        margin: 0 0 14px 0;
+
+        select {
+          height: 30px;
+          width: 70px;
+          margin: 0 6px 0 0;
+        }
+      }
+
+    }
+
+    button.signup {
+      font-family: Montserrat;
+      font-size: 16px;
+      margin: 0 100px;
+      height: 30px;
+      width: 306px;
+    }
+  }
+
+  div.login-here {
+    margin: 4px 100px;
+
+    span.btn {
+      color: blue;
+    }
+    
+    span.btn:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+
+input:focus {
+  outline: 0;
 }

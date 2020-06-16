@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
+
+div.login-form-container {
+  height: 230px;
+  width: 500px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+
+  span.login {
+    display: block;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 500;
+  }
+
+  form {
+    div.login-form {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      padding: 0 100px;
+
+      input, button {
+        height: 30px;
+        width: 300px;
+        margin: 0 0 14px 0;
+        font-family: Montserrat;
+        border-radius: 3px;
+        border: 1px solid #000000;
+      }
+
+      button {
+        width: 306px;
+      }
+    }
+  }
+
+}

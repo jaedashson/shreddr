@@ -81,7 +81,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    // fname, lname, dob, gender, pw twice?, email 
+    const { openModal } = this.props;
 
     const years = ['Year']
     for(let i = 2020; i >= 1905; i--) {
@@ -109,57 +109,31 @@ class SignupForm extends React.Component {
 
     return (
       <div className="signup-form-container">
+        <span className="signup">Create an Account</span>
         <form onSubmit={this.handleSubmit}>
-          <span>Sign </span>
+
           <div className="signup-form">
-            <input type="text"
-              value={this.state.fname}
-              onChange={this.update('fname')}
-              placeholder="First name"
-            />
-            <input type="text"
-              value={this.state.lname}
-              onChange={this.updateDob('lname')}
-              placeholder="Last name"
-            />
-
-            <select
-              name={this.state.month}
-              className="signup-month"
-              onChange={this.updateDob("month")}
-              value={this.state.dob.split('-')[1]}
-            >
-              {birthdayMonths}
-            </select>
-
-            <select
-              name={this.state.day}
-              className="signup-day"
-              onChange={this.updateDob("day")}
-              value={this.state.dob.split('-')[2]}
-            >
-              {birthdayDays}
-            </select>
-
-            <select
-              name={this.state.day}
-              className="signup-year"
-              onChange={this.update("year")}
-              value={this.state.dob.split('-')[0]}
-            >
-              {birthdayYears}
-            </select>
+            <div className="signup-r1">
+              <input type="text"
+                className="signup-names"
+                value={this.state.fname}
+                onChange={this.update('fname')}
+                placeholder="First name"
+              />
+              <input type="text"
+                className="signup-names"
+                value={this.state.lname}
+                onChange={this.updateDob('lname')}
+                placeholder="Last name"
+              />
+            </div>
 
             <input type="text"
               value={this.state.email}
               onChange={this.update('email')}
               placeholder="Email"
             />
-            <input type="text"
-              value={this.state.handle}
-              onChange={this.update('handle')}
-              placeholder="Handle"
-            />
+
             <input type="password"
               value={this.state.password}
               onChange={this.update('password')}
@@ -170,10 +144,48 @@ class SignupForm extends React.Component {
               onChange={this.update('password2')}
               placeholder="Confirm Password"
             />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+  
+            <div className="dob">
+              <span>Date of Birth:</span>
+              <br/>
+              <select
+                name={this.state.month}
+                className="signup-month"
+                onChange={this.updateDob("month")}
+                value={this.state.dob.split('-')[1]}
+              >
+                {birthdayMonths}
+              </select>
+
+              <select
+                name={this.state.day}
+                className="signup-day"
+                onChange={this.updateDob("day")}
+                value={this.state.dob.split('-')[2]}
+              >
+                {birthdayDays}
+              </select>
+
+              <select
+                name={this.state.day}
+                className="signup-year"
+                onChange={this.update("year")}
+                value={this.state.dob.split('-')[0]}
+              >
+                {birthdayYears}
+              </select>
+            </div>
           </div>
+          <button className="signup">Sign Up</button>
+          {/* {this.renderErrors()} */}
         </form>
+
+        <div className="login-here">
+          <span>Already have an account? Sign in </span>
+          <span className="btn"
+            onClick={() => openModal('login')}>here</span>
+          <span>.</span>
+        </div>
       </div>
     );
   }

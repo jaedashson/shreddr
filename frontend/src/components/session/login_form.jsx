@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import '../../stylesheets/login.scss';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -54,23 +55,21 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login-form-container">
+        <span className="login">Welcome Back!</span>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <br />
+          <div className="login-form">
             <input type="text"
               value={this.state.email}
               onChange={this.update('email')}
               placeholder="Email"
             />
-            <br />
             <input type="password"
               value={this.state.password}
               onChange={this.update('password')}
               placeholder="Password"
             />
-            <br />
-            <input type="submit" value="Submit" />
+            <button>Login</button>
             {this.renderErrors()}
           </div>
         </form>
