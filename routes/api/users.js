@@ -110,13 +110,15 @@ router.post('/login', (req, res) => {
 
 //user profile route
 
-router.get("/profile", (req, res) => {
-  User.findOne({ email: req.body.email })
+
+// GET /api/users/profile/fj3285u320fjdskoaf
+router.get("/profile/:user_id", (req, res) => {
+  User.findOne({ _id: req.params.user_id })
     .then(user => {
       if (!user) {
         return res.status(404).json({ email: 'This user does not exist!' })  
       }  else {
-        return res.json({ user }); // do i need to specifiy 200 code for success call?
+        return res.json(user); // do i need to specifiy 200 code for success call?
       }
     })
 })
