@@ -55,17 +55,20 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    debugger
     let user = {
       email: this.state.email,
-      fname: this.state.fname,
-      lname: this.state.lname,
+      fName: this.state.fName,
+      lName: this.state.lName,
       dob: this.state.dob,
-      gender: this.state.gender,
+      gender: "M",
+      // gender: this.state.gender,
       password: this.state.password,
-      password2: this.state.password2
+      // password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history);
+    this.props.signup(user);
+    this.props.closeModal();
   }
 
   renderErrors() {
@@ -116,14 +119,14 @@ class SignupForm extends React.Component {
             <div className="signup-r1">
               <input type="text"
                 className="signup-names"
-                value={this.state.fname}
-                onChange={this.update('fname')}
+                value={this.state.fName}
+                onChange={this.update('fName')}
                 placeholder="First name"
               />
               <input type="text"
                 className="signup-names"
-                value={this.state.lname}
-                onChange={this.updateDob('lname')}
+                value={this.state.lName}
+                onChange={this.update('lName')}
                 placeholder="Last name"
               />
             </div>

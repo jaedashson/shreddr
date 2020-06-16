@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("./confg/keys").mongoURI;
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
 const User = require("./models/User");
 const bodyParser = require("body-parser");
 const exercises = require('./routes/api/exercises');
@@ -21,17 +20,9 @@ app.use(bodyParser.json());
 
 
 app.get("/", (req, res) => {
-  const user = new User({
-    handle: "jim",
-    email: "jim@jim.jim",
-    password: "jimisgreat123"
-  })
-  user.save();
-  res.send("Hello World!");
 });
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
 app.use("/api/exercises", exercises);
 
 const port = process.env.PORT || 5000;
