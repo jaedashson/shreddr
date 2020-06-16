@@ -1,0 +1,103 @@
+const benchPress = new Exercise({
+  name: "barbell bench press",
+  equipment: ["barbell", "bench", "barbell rack"],
+  difficulty: "intermediate",
+  category: "free weight",
+  muscleGroups: ["chest", "tricep", "anterior deltoid"],
+  description: "The bench press is a compound exercise that builds strength and muscle in the chest and triceps. When many people think of listing, the bench press is often the first exercise that comes to mind"
+})
+
+const dumbbellBicepCurl = new Exercise({
+    name: "dumbbell bicep curl",
+    equipment: ["dumbbell"],
+    difficulty: "beginner",
+    category: "free weight",
+    muscleGroups: ["bicep"],
+    description: "The dumbbell bicep curl is a single joint exercise for building bigger and stringer biceps."
+})
+
+const inclineHammerCurl = new Exercise({
+    name: "incline hammer curl",
+    equipment: ["dumbbell"],
+    difficulty: "beginner",
+    category: "free weight",
+    muscleGroups: ["bicep"],
+    description: "The incline hammer curl is a single joint exercise for build bigger and stronger biceps."
+})
+
+const elbowPlank = new Exercise({
+    name: "elbow plank",
+    equipment: [],
+    difficulty: "intermediate",
+    category: "plank",
+    muscleGroups: ["abdominals"],
+    description: The elbow plank is a popular isometric abdominal exercise targeting the muscles of the core, the deep core or transversus abdominis in particular."
+})
+
+const crossBodyCrunch = new Exercise({
+    name:"cross body crunch",
+    equipment: [],
+    difficulty: "intermediate",
+    category: "crunch",
+    muscleGroups: ["abdominals"],
+    description: "The elbow-to-knee crunch is a bodyweight exercise targeting the ab muscles, the obliques and rectus abdominis or "six-pack" muscles in particular."
+})
+
+const weightedDonkeyCalfRaise = new Exercise({
+    name: "weighted donkey calf raise",
+    equipment: ["weight belt"],
+    difficulty: "intermediate",
+    category: "calf raise"
+    muscleGroups: ["calves"],
+    description: "The weighted donkey calf raise is a strength and muscle-building exercise focused on the muscles of the lower leg, most prominently the gastrocnemius muscle."
+})
+
+const olympicSquat = new Exercise({
+    name: "olympic squat",
+    equipment: ["barbell", "olympic squat rack"],
+    difficulty: "beginner",
+    category: "olympic weightlifting",
+    muscleGroups: ["quadriceps"],
+    description: "The olympic squat is a high bar squat."
+})
+
+const standingDumbellShrug = new Exercise({
+    name: "standing dumbell shrug",
+    equipment: ["dumbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["trapizius"],
+    description: "The standing dumbbell shrug is a popular movement to build and strengthen the trapezius muscles."
+})
+
+const pullups = new Excercise({
+    name: "pullups",
+    equipment: ["pullup bar"],
+    difficulty: "intermediate",
+    category: "upper body"
+    muscleGroups: ["latissimus dorsi", "bicep"],
+    description: "The pull-up is a multi-joint bodyweight exercise that builds strength and muscle in the upper back, biceps, and core."
+})
+
+const dumbbellBenchPress = new Exercise({
+    name: "dumbbell bench press",
+    equipment: ["dumbbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["bicep", "chest", "anterior deltoid"],
+    description: "The bench press is a compound exercise that builds strength and muscle in the chest and triceps. When many people think of listing, the bench press is often the first exercise that comes to mind."
+})
+
+const bodyweightPushup = new Exercise({
+    name: "bodyweight push up",
+    equipment: ["weight belt"],
+    difficulty: "intermediate",
+    category: "bodyweight",
+    muscleGroups: ["pectoral", "tricep"],
+    description: "The pushup builds both upper-body and core."
+})
+
+const machineBenchPress = new Exercise({
+    name: ""machine bench press",
+    equipment: 
+})
