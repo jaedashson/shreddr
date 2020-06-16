@@ -147,6 +147,22 @@ class SignupForm extends React.Component {
               onChange={this.update('password2')}
               placeholder="Confirm Password"
             />
+
+            <div className="gender">
+              <span>Sex:</span>
+              <br/>
+              <label>
+                <input type="radio"
+                  value="Female"
+                  onClick={this.update('gender')}/> Female
+              </label>
+
+              <label>
+                <input type="radio"
+                  value="Male" 
+                  onClick={this.update('gender')}/> Male
+              </label>
+            </div>
   
             <div className="dob">
               <span>Date of Birth:</span>
@@ -172,14 +188,15 @@ class SignupForm extends React.Component {
               <select
                 name={this.state.day}
                 className="signup-year"
-                onChange={this.update("year")}
+                onChange={this.updateDob("year")}
                 value={this.state.dob.split('-')[0]}
               >
                 {birthdayYears}
               </select>
             </div>
           </div>
-          <button className="signup">Sign Up</button>
+          <button className="signup"
+            onClick={this.handleSubmit}>Sign Up</button>
           {/* {this.renderErrors()} */}
         </form>
 
