@@ -57,15 +57,15 @@ class SignupForm extends React.Component {
     e.preventDefault();
     let user = {
       email: this.state.email,
-      fname: this.state.fname,
-      lname: this.state.lname,
+      fName: this.state.fName,
+      lName: this.state.lName,
       dob: this.state.dob,
       gender: this.state.gender,
       password: this.state.password,
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history);
+    this.props.signup(user);
   }
 
   renderErrors() {
@@ -116,14 +116,14 @@ class SignupForm extends React.Component {
             <div className="signup-r1">
               <input type="text"
                 className="signup-names"
-                value={this.state.fname}
-                onChange={this.update('fname')}
+                value={this.state.fName}
+                onChange={this.update('fName')}
                 placeholder="First name"
               />
               <input type="text"
                 className="signup-names"
-                value={this.state.lname}
-                onChange={this.updateDob('lname')}
+                value={this.state.lName}
+                onChange={this.update('lName')}
                 placeholder="Last name"
               />
             </div>
@@ -144,6 +144,22 @@ class SignupForm extends React.Component {
               onChange={this.update('password2')}
               placeholder="Confirm Password"
             />
+
+            <div className="gender">
+              <span>Sex:</span>
+              <br/>
+              <label>
+                <input type="radio"
+                  value="Female"
+                  onClick={this.update('gender')}/> Female
+              </label>
+
+              <label>
+                <input type="radio"
+                  value="Male" 
+                  onClick={this.update('gender')}/> Male
+              </label>
+            </div>
   
             <div className="dob">
               <span>Date of Birth:</span>
@@ -169,14 +185,15 @@ class SignupForm extends React.Component {
               <select
                 name={this.state.day}
                 className="signup-year"
-                onChange={this.update("year")}
+                onChange={this.updateDob("year")}
                 value={this.state.dob.split('-')[0]}
               >
                 {birthdayYears}
               </select>
             </div>
           </div>
-          <button className="signup">Sign Up</button>
+          <button className="signup"
+            onClick={this.handleSubmit}>Sign Up</button>
           {/* {this.renderErrors()} */}
         </form>
 
