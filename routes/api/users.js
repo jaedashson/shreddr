@@ -32,10 +32,18 @@ router.post("/register", (req, res) => {
     if (user) {
       return res.status(400).json({email: "A user is already registered with that email"});
     } else {
+      const dateArray = req.body.dob.split("-");
+      const year = parseInt(dateArray[0]);
+      const month = parseInt(dateArray[1]);
+      const date = parseInt(dateArray[2]);
+
       const newUser = new User({
-        handle: req.body.handle,
+        fName: req.body.fName,
+        lName: req.body.lName,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        dob: new Date(year, month, date),
+        gender: req.body.gender,
       })
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -57,7 +65,7 @@ router.post('/login', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
+  
   const email = req.body.email;
   const password = req.body.password;
 
@@ -70,7 +78,23 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            res.json({ msg: "Success" });
+            const payload = {
+              id: user.id,
+              // handle: user.handle,
+              email: user.email
+            }
+            jwt.sign(
+              payload,
+              keys.secretOrKey,
+              { expiresIn: 3600 },
+              (err, token) => {
+                // debugger
+                res.json({
+                  success: true,
+                  token: "Bearer " + token
+                });
+              }
+            )
           } else {
             return res.status(400).json({ password: "Incorrect password" });
           }
