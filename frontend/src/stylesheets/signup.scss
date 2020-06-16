@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
 
 div.signup-form-container {
-  height: 450px;
+  // height: 420px;
   width: 500px;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -19,59 +19,86 @@ div.signup-form-container {
     div.signup-form {
       display: flex;
       flex-direction: column;
-      width: 500px;
+      width: 300px;
       padding: 0 100px;
-
-      .signup-r1 {
-        display: flex;
-
-        .signup-names {
-          width: 142px;
-          margin-right: 10px;
-        }        
-      }
 
       input {
         height: 30px;
-        width: 300px;
-        margin: 0 0 14px 0;
-        padding: 0 0 0 4px;
+        width: 293px;
+        margin: 0;
+        padding: 0 0 0 5px;
         font-family: Montserrat;
         border-radius: 3px;
         border: 1px solid #000000;
       }
 
-      // input::placeholder {
-      //   padding: 0 0 0 4px;
-      // }
+      .signup-r1 {
+        display: flex;
 
-      div.dob, div.gender {
+        .signup-names {
+          width: 138px;
+          padding-left: 5px;
+          margin-right: 10px;
+        }        
+      }
+
+      .error-border {
+        border: 1px solid rgb(252, 13, 27)
+      }
+
+      div.gender {
         font-family: Montserrat;
-        font-size: 16px;
-        margin: 0 0 14px 0;
+        font-size: 20px;
+        margin: 0px;
+        height: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-        select {
-          height: 30px;
-          width: 70px;
-          margin: 0 6px 0 0;
-        }
 
-        label {
+        .gender-wrapper {
           display: flex;
+          flex-direction: row;
           align-items: center;
+          justify-content: center;
+          width: 270px;
+
+          label {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            margin-left: 5px;
+          }
 
           input {
             width: 20px;
+            height: 20px;
             margin: 0;
             padding: 0;
           }
         }
       }
 
-      div.gender {
+      div.dob {
+        font-family: Montserrat;
+        font-size: 16px;
+        margin: 0 0 15px 0;
         display: flex;
-      }
+        flex-direction: column;
 
+        .dob-text {
+          margin-bottom: 3px;
+        }
+        .dob-r2 {
+          display: flex;
+          flex-direction: row;
+
+          select {
+          height: 30px;
+          width: 70px;
+          }
+        }
+      }
     }
 
     button.signup {
@@ -85,6 +112,7 @@ div.signup-form-container {
 
   div.login-here {
     margin: 4px 100px;
+    padding-bottom: 20px;
 
     span.btn {
       color: blue;
@@ -99,4 +127,16 @@ div.signup-form-container {
 
 input:focus {
   outline: 0;
+}
+
+.signup-errors {
+  height: 15px;
+  padding: 3px 0px;
+  font-family: Montserrat;
+  font-size: 13px;
+  color: #BE4B49;
+}
+
+.hidden {
+    visibility:hidden
 }

@@ -35,6 +35,14 @@ module.exports = function validateRegisterInput(data) {
         errors.password = 'Password must be between 6 and 30 characters';
     }
 
+    if (Validator.isEmpty(data.gender)) {
+        errors.gender = 'Gender field is required';
+    }
+
+    if(data.password !== data.password2 || data.password2 === '') {
+        errors.password2 = 'Password must match'
+    }
+
     if (Validator.isEmpty(data.dob)){
         errors.dob = 'Date of birth is required';
     }
