@@ -1,5 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { 
+  withRouter,
+  Link 
+} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/profile.scss';
 
@@ -10,7 +13,10 @@ class Profile extends React.Component {
     return(
       <section className="profile">
         <div className="splash-nav">
-          <span>Shreddr</span>
+          <Link to='/'
+            style={{ textDecoration: 'none' }}>
+          <span className="link">Shreddr</span>
+          </Link>
 
           <div className="center">
             <span>Training</span>
@@ -68,8 +74,12 @@ class Profile extends React.Component {
 
           </div>
 
-          <div className="progress-tracker">
-
+          <div className="progress-tracker-container">
+            <div className="progress-tracker">
+              <div className="banner">
+                <span>Progress Tracker</span>
+              </div>
+            </div>
           </div>
         </section>
       </section>

@@ -15,6 +15,10 @@ section.profile {
       cursor: pointer;
     }
 
+    span.link {
+      color: black;
+    }
+
     div.center {
       display: flex;
       flex-direction: row;
@@ -95,7 +99,7 @@ section.profile {
 
   section.main {
     height: 300px;
-    border-bottom: 2px solid black;
+    // border-bottom: 2px solid black;
     font-family: Bebas Neue;
 
     div.row-1-container {
@@ -173,10 +177,38 @@ section.profile {
         div.line {
           height: 300px;
           border-left: 1px solid black;
+          position: relative;
+          left: -1px;
         }
       }
     }
-  }
 
-  
+    div.progress-tracker-container {
+      height: 500px;
+      width: 100%;
+
+      div.progress-tracker {
+        height: 100%;
+        margin: auto;
+        width: 900px;
+
+        div.banner {
+          background-color: #A4303F;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+          // margin: 2px 0 0 0;
+
+          span {
+            color: white;
+            font-family: Bebas Neue;
+            font-size: 24px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+  }
 }
