@@ -10,7 +10,28 @@ class Splash extends React.Component {
   }
  
   render() {
-    const { openModal } = this.props;
+    const { openModal, isAuthenticated, logout } = this.props;
+
+    let btn;
+    if (isAuthenticated) {
+      btn = (
+        <button>
+          <span className="btn-text"
+            onClick={() => logout()}
+          >Logout</span>
+        </button>
+      )
+
+    } else {
+      btn = (
+        <button>
+          <FontAwesomeIcon icon={['far', 'user']}
+            className="fa-user" />
+          <span className="btn-text"
+            onClick={() => openModal('signup')}>Join Now</span>
+        </button>
+      )
+    }
 
     return (
       <section className="splash">
@@ -26,12 +47,7 @@ class Splash extends React.Component {
           </div>
 
           <div className="btns">
-            <button>
-              <FontAwesomeIcon icon={['far', 'user']}
-                className="fa-user" />
-              <span className="btn-text"
-                onClick={() => openModal('signup')}>Join Now</span>
-            </button>
+            {btn}
           </div>
 
         </div>
