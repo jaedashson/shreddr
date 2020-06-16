@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue');
+
+section.profile {
+  div.splash-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+
+    span {
+      font-family: Bebas Neue;
+      font-size: 40px;
+      padding: 0 0 0 60px;
+      cursor: pointer;
+    }
+
+    div.center {
+      display: flex;
+      flex-direction: row;
+
+      div.border {
+        height: 36px;
+        border-left: 1px solid darkgrey;
+        margin: 0px 20px;
+      }
+
+      span {
+        cursor: pointer;
+        font-size: 30px;
+        padding: 0;
+      }
+
+      span:first-child {
+        border: none;
+      }
+
+      span:hover {
+        border-bottom: 3px solid #A4303F;
+      }
+    }
+
+    div.btns {
+      display: flex;
+      flex-direction: row;
+      padding: 0 60px 0 0;
+
+      button {
+        background-color: #A4303F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        height: 40px;
+        margin-left: 10px;
+
+        span.btn-text {
+          font-family: Bebas Neue;
+          font-size: 22px;
+          padding: 4px 10px;
+        }
+
+        .fa-user {
+          font-size: 16px; 
+          position: relative;
+          bottom: 1px;
+          left: 8px;
+        }
+      }
+    }
+  }
+
+  div.profile-nav {
+    background-color: grey;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    height: 34px;
+    
+    div {
+      margin: auto;
+      width: 900px;
+
+      span {
+        color: white;
+        font-family: Bebas Neue;
+        font-size: 24px;
+        // padding: 0 0 0 60px;
+      }
+    }
+
+  }
+
+  section.main {
+    height: 300px;
+    border-bottom: 2px solid black;
+    font-family: Bebas Neue;
+
+    div.row-1-container {
+      width: 100%;
+      height: 300px; 
+
+      div.row-1 {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        width: 900px;
+        height: 300px;
+        border-left: 1px solid black;
+        
+        div.left {
+          display: flex;
+          margin: 0;
+          height: 300px;
+          width: 550px;
+          // border-right: 1px solid black;
+  
+          div.left-left {
+            width: 200px;
+            
+            div.pfp {
+              // background-image: currentUser's pfp;
+              height: 200px;
+              margin: 20px;
+              width: 160px;
+              border: 1px solid black;
+            }
+    
+            div {
+              display: flex;
+              justify-content: center;
+              span.name {
+                color: #000;
+                // font-family: Bebas Neue;
+                font-size: 20px;
+              }
+            }
+          }
+
+          div.left-right {
+            height: 300px;
+            width: 350px;
+
+            div {
+              margin: 40px 20px;
+
+              span {
+                line-height: 1.5;
+                font-size: 20px;
+                display: block;
+              }
+            }
+          }
+  
+        }
+  
+        div.right {
+          display: flex;
+          justify-content: center;
+          border-left: 1px solid lightslategrey;
+          height: 260px;
+          width: 350px;
+          margin: 20px;
+
+          span {
+            display: block;
+            font-size: 24px;
+          }
+        }
+
+        div.line {
+          height: 300px;
+          border-left: 1px solid black;
+        }
+      }
+    }
+  }
+
+  
+}
