@@ -7,16 +7,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navbar extends React.Component {
   render() {
-    const { openModal, isAuthenticated, logout } = this.props;
+    const { openModal, isAuthenticated, logout, currentUser } = this.props;
 
     let btn;
     if (isAuthenticated) {
       btn = (
-        <button>
-          <span className="btn-text"
-            onClick={() => logout()}
-          >Logout</span>
-        </button>
+        <>
+          <Link to={`/users/${currentUser.id}`}><FontAwesomeIcon className="nav-bar-profile-icon" icon="user-circle" /></Link>
+          <button>
+            <span className="btn-text"
+              onClick={() => logout()}
+            >Logout</span>
+          </button>
+        </>
       )
 
     } else {

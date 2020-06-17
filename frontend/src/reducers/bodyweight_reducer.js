@@ -1,6 +1,6 @@
 import { RECEIVE_WEIGHT } from '../actions/bodyweight_actions';
 
-const WeightReducer = (state = {}, action) => {
+const BodyweightReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   switch (action.type) {
@@ -12,4 +12,4 @@ const WeightReducer = (state = {}, action) => {
   }
 };
 
-export default WeightReducer;
+export default BodyweightReducer;

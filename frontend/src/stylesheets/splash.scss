@@ -49,6 +49,8 @@ section.splash {
       display: flex;
       flex-direction: row;
       padding: 0 60px 0 0;
+      display: flex;
+      align-items: center;
 
       button {
         background-color: #A4303F;
@@ -64,7 +66,7 @@ section.splash {
         span.btn-text {
           font-family: Bebas Neue;
           font-size: 22px;
-          padding: 4px 10px 4px 16px;
+          padding: 4px 10px;
         }
 
         .fa-user {
@@ -73,6 +75,13 @@ section.splash {
           bottom: 1px;
           left: 8px;
         }
+      }
+
+      .nav-bar-profile-icon {
+        color: #000000;
+        font-size: 34px;
+        margin-right: 5px;
+        cursor: pointer;
       }
     }
   }

@@ -5,6 +5,7 @@ import {
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/profile.scss';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class Profile extends React.Component {
       user: currentUser.id,
       weight: '',
       date: `${this.year}-${this.month}-${this.day}`,
+      uploadFile: "upload-input"
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,14 +62,20 @@ class Profile extends React.Component {
     this.props.addNewWeight(weight);
   }
 
+  // handleUploadClick() {
+
+  //   $(".upload-input").click();
+  // }
+
+
   render() {
     const { currentUser, user } = this.props;
 
-    const data = [{ date: '6/5', weight: 178, pv: 2400, amt: 2400 }, { date: '6/10', weight: 174, pv: 2500, amt: 2500 }, { date: '6/15', weight: 169, pv: 2200, amt: 2200 }];
+    const data = [{ date: '6/5', weight: 178, amt: 2400 }, { date: '6/10', weight: 174, amt: 2500 }, { date: '6/15', weight: 169, amt: 2200 }];
 
     const renderLineChart = (
       <LineChart width={870} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }} className="weight-chart">
-        <Line type="monotone" dataKey="weight" stroke="#8884d8" />
+        <Line type="monotone" dataKey="weight" stroke="#000000" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <XAxis dataKey="date" />
         <YAxis />
@@ -110,8 +118,7 @@ class Profile extends React.Component {
                 <span className="text">Update New Weight</span>
                 <form onSubmit={this.handleSubmit}>
                   <label className="weight">Weight: 
-                    <input type="text"
-                      onChange={this.update('weight')}/>
+                    <input type="text" onChange={this.update('weight')}/>
                   </label>
 
                   <div className="weight-date">
@@ -154,6 +161,17 @@ class Profile extends React.Component {
               <div className="upload-photos">
 
                 <span>Upload Progress Photos</span>
+                <label className="upload-btn"
+                  // onClick={this.handleUploadClick}
+                  >
+                  <FontAwesomeIcon className="upload-btn" 
+                    icon="upload" />
+                  <input className={this.state.uploadFile}
+                    type="file"
+                    id="file"
+                    onChange={this.handleUploadPic}
+                  />
+                </label>
               </div>
             </div>
           </div>

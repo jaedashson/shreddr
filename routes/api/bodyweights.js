@@ -40,7 +40,9 @@ router.post("/:user_id", (req, res) => {
         date: new Date(year, month, date)
     })
 
-    newBodyweight.save().then(bodyweight => res.json(bodyweight));
+    newBodyweight.save().then(bodyweight => {
+        return res.json(bodyweight)
+    });
 })
 
 module.exports = router;

@@ -11,6 +11,8 @@ section.profile {
     div {
       margin: auto;
       width: 900px;
+      display: flex;
+      justify-content: center;
 
       span {
         color: white;
@@ -160,6 +162,30 @@ section.profile {
 
             span {
               font-size: 24px;
+            }
+
+            label.upload-btn:hover {
+              cursor: pointer;
+            }
+
+            label.upload-btn {
+              background-color: #efefef;
+              border: 1px solid #767676;
+              border-radius: 8px;
+              margin: 20px;
+              height: 50px;
+              width: 50px;
+
+              .upload-btn {
+                font-size: 28px;
+                position: relative;
+                top: 10px;
+                left: 12px;
+              }
+
+              input#file {
+                display: none;
+              }
             }
           }
         }
