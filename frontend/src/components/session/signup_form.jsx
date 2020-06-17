@@ -195,11 +195,10 @@ class SignupForm extends React.Component {
               </div>  
             </div>
           </div>
-          <button className="signup"
-            onClick={this.handleSubmit}>Sign Up</button>
+          <button className="signup" onClick={this.handleSubmit}>Sign Up</button>
         </form>
 
-        <div className="login-here">
+        <div className="signup-here">
           <span>Already have an account? Sign in </span>
           <span className="btn"
             onClick={() => openModal('login')}>here</span>

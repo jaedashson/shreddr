@@ -18,10 +18,13 @@ import {
   faUser
 } from '@fortawesome/free-regular-svg-icons';
 
+
+
+
+
 library.add(fab, faUser);
 
 
-// import App from './App';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

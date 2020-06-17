@@ -32,17 +32,17 @@ export const signup = user => dispatch => (
   ))
 );
 
-export const login = user => dispatch => {
-  return APIUtil.login(user).then(res => {
+export const login = user => dispatch => (
+  APIUtil.login(user).then(res => {
     const { token } = res.data;
     localStorage.setItem('jwtToken', token);
     APIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
     return dispatch(receiveCurrentUser(decoded))
-  }, err => {
-    return dispatch(receiveErrors(err.response.data));
-  })
-}
+  }, err => (
+      dispatch(receiveErrors(err.response.data))
+    ))
+)
 
 export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken')
