@@ -127,32 +127,6 @@ router.get("/profile/:user_id", (req, res) => {
     })
 })
 
-//add bodyweight route
-router.patch("/profile/:user_id/bodyweight", (req, res) => {
-  User.findOne({ _id: req.params.user_id })
-    .then(user => {
-      if (!user) {
-        return res.status(404).json({ email: 'This user does not exist!' })
-      } else {
-        const dateArray = req.body.date.split("-");
-        const year = parseInt(dateArray[0]);
-        const month = parseInt(dateArray[1]);
-        const date = parseInt(dateArray[2]);
-
-        const bodyweight = {
-          weight: req.body.weight,
-          date: new Date(year, month, date)
-        }
-
-        User.update(
-          { _id: user._id },
-          { $push: { bodyweights: bodyweight } },
-          done
-        );
-      }
-    })
-})
-
 module.exports = router; 
 
 // Pushing from Jae-Son's computer
