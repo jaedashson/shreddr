@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-
 app.get("/", (req, res) => {
 });
 

@@ -98,6 +98,145 @@ const bodyweightPushup = new Exercise({
 })
 
 const machineBenchPress = new Exercise({
-    name: ""machine bench press",
-    equipment: 
+    name: "machine bench press",
+    equipment: ["bench press machine"],
+    difficulty: "intermediate",
+    category: "machine",
+    muscleGroups: ["pectoral, tricep"],
+    description: "The machine bench press is a compound exercise that builds strength and muscle in the chest and triceps."
+})
+
+const barbellTricepExtension = new Exercise({
+    name: "barbell tricep extension",
+    equipment: ["barbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["tricep"],
+    description: "The barbell tricep extension is a popular to build and strengthen the triceps." 
+})
+
+const skullcrusher = new Exercise({
+    name: "skullcrusher",
+    equipment: ["dumbbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["tricep"],
+    description: "The skullcrusher is an exercise which works on the triceps."
+})
+
+const dip = new Exercise({
+    name: "dip",
+    equipment: ["chair", "dip handle bars"],
+    difficulty: "intermediate",
+    category: "dip"
+    muscleGroups: ["tricep"],
+    description: "The dip is a classic workout with a focus on the triceps." 
+})
+
+const tricepPushdown = new Exercise({
+    name: "tricep pushdown",
+    equipment: ["tricep pushdown machine"],
+    difficulty: "beginner",
+    category: "machine",
+    muscleGroups: ["tricep"],
+    description: "The tricep pushdown utilizes machinary to improve tricep mass."
+})
+
+const barbellDeadlift = new Exercise({
+    name: "barbell deadlift",
+    equipment: ["barbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["latissimus dorsi"],
+    description: "The barbell deadlift works out the lats."
+})
+
+const dumbbellDeadlift = new Exercise({
+    name: "dumbbel deadlift",
+    equipment: ["dumbbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["latissimus dorsi"],
+    description: "The dumbbell deadlift works out the lats."
+})
+
+const latPulldown = new Exercise({
+    name: "lat pulldown",
+    equipment: ["lat pulldown machine"],
+    difficulty: "intermediate",
+    category: "machine",
+    muscleGroups: ["latissimus dorsi"],
+    description: "The lat pulldown utilizes a machine to work work out the lats."
+})
+
+const barbellSquat = new Exercise({
+    name: "barbell squat",
+    equipment: ["barbell"],
+    difficulty: "advanced",
+    category: "free weight",
+    muscleGroups: ["quadracep"],
+    description: "The barbell squat is rigorous quadracep workout."
+})
+
+const dumbbellLunge = new Exercise({
+    name: "dumbbell lunge",
+    equipment: ["dumbbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["quadracep"],
+    description: "The dumbbell lunge workout focuses on the quadraceps."
+})
+
+const barbellGluteBridge = new Exercise({
+    name: "barbell glute bridge",
+    equipment: ["barbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["gluteus maximus", "hamstring"],
+    description: "The barbell glute bridge is a popular exercise targeting the muscles of the glutes and hamstrings."
+})
+
+const powerCleanFromBlocks = new Exericse({
+    name: "power clean from blocks",
+    equipment: "barbell",
+    difficulty: "beginner",
+    category: "olympic weightlifting",
+    muscleGroups: ["hamstring"],
+    description: "The power clean from block is a variation of the clean."
+})
+
+const oneArmDumbellRow = new Exercise({
+    name: "one arm dumbell row",
+    equipment: "dumbell",
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["latissimus dorsi"],
+    description: "The single-arm bench dumbbell row is a popular exercise for building the latissimus dorsi, or lat, muscles of the back."
+})
+
+const lyingFaceDownPlateNeckResistance = new Exercise({
+    name: "lying down plate neck resistance",
+    equipment: ["bench"],
+    difficulty: "beginner",
+    category: "other",
+    muscleGroups: ["neck"],
+    description: "The lying face down plate neck resistance is a beginner friendly neck workout."
+})
+
+const seatedFingerCurl = new Exercise({
+    name: "seated finger curl",
+    equipment: ["barbell"],
+    difficulty: "beginner",
+    category: "free weight",
+    muscleGroups: ["forearm"],
+    description: "The seated finger curl is an exercise targeting the muscles of the hands and forearms."
+})
+
+const concentrationCurl = new Exercise({
+    name: "concentration curl",
+    equipment: ["dumbell"],
+    difficulty: "intermediate",
+    category: "free weight",
+    muscleGroups: ["bicep"],
+    description: "The concentration curl is a classic exercise for building the biceps one arm at a time."
 })

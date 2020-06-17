@@ -29,8 +29,13 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  bodyweights: {
+    type: [Object]
   }
 });
+
+// user.bodyweights => [ { weight: 150, date: "2020-06-10"} ]
 
 const User = mongoose.model("users", UserSchema);
 module.exports = User;
