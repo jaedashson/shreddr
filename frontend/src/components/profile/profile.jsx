@@ -8,8 +8,25 @@ import '../../stylesheets/profile.scss';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+
+    let date = new Date();
+    this.day = date.getDate();
+    this.month = date.getMonth() + 1;
+    this.year = date.getFullYear();
+
+    const { currentUser } = props;
+
+    this.state = {
+      user: currentUser.id,
+      weight: '',
+      date: `${this.year}-${this.month}-${this.day}`,
+    }
+  }
+
   render() {
-    const { logout } = this.props;
+    const { logout, addNewWeight, currentUser } = this.props;
 
     const data = [{ date: '6/5', weight: 178, pv: 2400, amt: 2400 }, { date: '6/10', weight: 174, pv: 2500, amt: 2500 }, { date: '6/15', weight: 169, pv: 2200, amt: 2200 }];
 
@@ -23,6 +40,22 @@ class Profile extends React.Component {
       </LineChart>
     );
     // <YAxis type="number" domain={['dataMin-5', 'dataMax+5']} tick={{ fill: 'white', fontSize: 12 }} />
+
+    let addWeightPhotos;
+    if (currentUser.id && currentUser.id === this.props.match.params.userId) {
+      addWeightPhotos = (
+        <div className="update-container">
+          <div className="update">
+            <div className="update-weight">
+              <span>Update New Weight</span>
+            </div>
+            <div className="upload-photos">
+              <span>Upload Progress Photos</span>
+            </div>
+          </div>
+        </div>
+      )
+    }
 
     return(
       <section className="profile">
@@ -42,7 +75,7 @@ class Profile extends React.Component {
                   </div>
 
                   <div>
-                    <span className="name">Tiffany</span>
+                  <span className="name">Tiffany</span>
                     {/* change to currentUser's fname */}
                   </div>
                 </div>
@@ -66,7 +99,7 @@ class Profile extends React.Component {
 
           </div>
 
-          <div className="update-container">
+          {/* <div className="update-container">
             <div className="update">
               <div className="update-weight">
                 <span>Update New Weight</span>
@@ -75,7 +108,9 @@ class Profile extends React.Component {
                 <span>Upload Progress Photos</span>
               </div>              
             </div>
-          </div>
+          </div> */}
+
+          {addWeightPhotos}
           
           <div className="progress-tracker-container">
             <div className="progress-tracker">
