@@ -1,80 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue');
 
 section.profile {
-  div.splash-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    width: 100%;
-
-    span {
-      font-family: Bebas Neue;
-      font-size: 40px;
-      padding: 0 0 0 60px;
-      cursor: pointer;
-    }
-
-    span.link {
-      color: black;
-    }
-
-    div.center {
-      display: flex;
-      flex-direction: row;
-
-      div.border {
-        height: 36px;
-        border-left: 1px solid darkgrey;
-        margin: 0px 20px;
-      }
-
-      span {
-        cursor: pointer;
-        font-size: 30px;
-        padding: 0;
-      }
-
-      span:first-child {
-        border: none;
-      }
-
-      span:hover {
-        border-bottom: 3px solid #A4303F;
-      }
-    }
-
-    div.btns {
-      display: flex;
-      flex-direction: row;
-      padding: 0 60px 0 0;
-
-      button {
-        background-color: #A4303F;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        height: 40px;
-        margin-left: 10px;
-
-        span.btn-text {
-          font-family: Bebas Neue;
-          font-size: 22px;
-          padding: 4px 10px;
-        }
-
-        .fa-user {
-          font-size: 16px; 
-          position: relative;
-          bottom: 1px;
-          left: 8px;
-        }
-      }
-    }
-  }
 
   div.profile-nav {
     background-color: grey;
@@ -92,7 +18,6 @@ section.profile {
         font-size: 24px;
       }
     }
-
   }
 
   section.main {
@@ -171,11 +96,6 @@ section.profile {
             font-size: 24px;
           }
         }
-
-        // div.line {
-        //   height: 300px;
-        //   border-left: 1px solid black;
-        // }
       }
     }
 
