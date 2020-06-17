@@ -7,7 +7,7 @@ export const receiveWeight = newWeight => ({
   newWeight
 });
 
-export const addWeight = newWeight => dispatch => (
+export const addNewWeight = newWeight => dispatch => (
   addWeight(newWeight)
     .then(weight => dispatch(receiveWeight(weight)))
     .catch(err => console.log(err))
