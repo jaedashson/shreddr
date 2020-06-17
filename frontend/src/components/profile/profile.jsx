@@ -49,12 +49,6 @@ class Profile extends React.Component {
     }
   }
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     let weight = {
@@ -63,7 +57,6 @@ class Profile extends React.Component {
       date: this.state.date,
     };
 
-    debugger;
     this.props.addNewWeight(weight);
   }
 
