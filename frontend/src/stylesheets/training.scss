@@ -29,17 +29,55 @@ section.training {
 
       form.training-form {
         display: flex;
+        flex-direction: column;
         margin: auto;
         width: 898px;
-        height: 500px;
+        height: 498px;
         border-left: 1px solid rgb(206, 208, 212);
         border-right: 1px solid rgb(206, 208, 212);
+        border-bottom: 2px solid rgb(206, 208, 212);
         background-color: #FFFFFF;
 
-        div.col-1, div.col-2, div.col-3 {
-          height: 100%;
-          width: 33.33%;
-          border: 1px solid black;
+        div.options {
+          display: flex;
+
+          div.col-1, div.col-2, div.col-3 {
+            height: 90%;
+            width: 33.33%;
+            // border: 1px solid black;
+            margin: 30px;
+  
+            span {
+              display: block;
+              font-size: 22px;
+              padding: 0 0 20px 0;
+            }
+  
+            div.equipment-list {
+              display: flex;
+              flex-direction: column;
+              font-size: 20px;
+  
+              input {
+                margin: 6px 10px;
+              }
+            }
+  
+            div.muscles-list {
+              display: flex;
+              flex-direction: column;
+              font-size: 20px;
+  
+              input {
+                margin: 6px 10px;
+              }
+            }
+          }
+        }
+
+        button {
+          margin: auto;
+          width: 400px;
         }
       }
     }
