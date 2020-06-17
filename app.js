@@ -8,6 +8,7 @@ const User = require("./models/User");
 const bodyParser = require("body-parser");
 const exercises = require('./routes/api/exercises');
 const workouts = require('./routes/api/workouts');
+const bodyweights = require('./routes/api/bodyweights');
 
 // passport?
 
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", users);
 app.use("/api/exercises", exercises);
 app.use("/api/workouts", workouts);
+app.use("/api/bodyweights", bodyweights);
 
 const port = process.env.PORT || 5000;
 

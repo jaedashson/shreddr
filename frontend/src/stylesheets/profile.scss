@@ -11,6 +11,8 @@ section.profile {
     div {
       margin: auto;
       width: 900px;
+      display: flex;
+      justify-content: center;
 
       span {
         color: white;
@@ -21,8 +23,8 @@ section.profile {
   }
 
   section.main {
-    height: 300px;
     font-family: Bebas Neue;
+    background-color: rgb(240, 242, 245);
 
     div.row-1-container {
       width: 100%;
@@ -34,8 +36,9 @@ section.profile {
         margin: auto;
         width: 898px;
         height: 300px;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border-left: 1px solid rgb(206, 208, 212);
+        border-right: 1px solid rgb(206, 208, 212);
+        background-color: #FFFFFF;
         
         div.left {
           display: flex;
@@ -52,7 +55,7 @@ section.profile {
               height: 200px;
               margin: 20px;
               width: 160px;
-              border: 1px solid black;
+              border: 1px solid rgb(206, 208, 212);
             }
     
             div {
@@ -86,7 +89,7 @@ section.profile {
         div.right {
           display: flex;
           justify-content: center;
-          border-left: 1px solid lightslategrey;
+          border-left: 1px solid rgb(206, 208, 212);
           height: 260px;
           width: 400px;
           margin: 20px;
@@ -104,15 +107,16 @@ section.profile {
       width: 100%;
 
       div.update {
-        border: 1px solid black;
-        border-top: 2px solid black;
+        border: 1px solid rgb(206, 208, 212);
+        border-top: 2px solid rgb(206, 208, 212);
         display: flex;
         height: 100%;
         margin: auto;
         width: 898px;
+        background-color: #FFFFFF;
 
         div.update-weight-container {
-          border-right: 1px solid lightslategrey;
+          border-right: 1px solid rgb(206, 208, 212);
         }
 
         div.update-weight-container {
@@ -124,24 +128,46 @@ section.profile {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             margin-top: 10px;
 
             span.text {
               font-size: 24px;
-              padding: 0 0 6px 0;
+              margin-bottom: 5px;
+              margin-top: 10px;
             }
 
             form {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
               font-size: 18px;
-              label.weight {
+              
+              .weight-wrapper {
+                margin: 7px 0px;
+
+                label.weight {
+                  margin-right: 5px;
+                }
                 input {
-                  margin: 0 0 0 4px;
+                  padding-left: 5px;
                 }
               }
 
               div.weight-date {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
+                align-items: center;
+                margin: 7px 0px;
+                width: 195px;
+
+                .weight-text {
+                  margin-right: 5px;
+                }
+              }
+
+              .track-weight-btn {
+                margin: 7px 0px;
               }
             }
           }
@@ -161,6 +187,30 @@ section.profile {
             span {
               font-size: 24px;
             }
+
+            label.upload-btn:hover {
+              cursor: pointer;
+            }
+
+            label.upload-btn {
+              background-color: #efefef;
+              border: 1px solid rgb(206, 208, 212);
+              border-radius: 8px;
+              margin: 20px;
+              height: 50px;
+              width: 50px;
+
+              .upload-btn {
+                font-size: 28px;
+                position: relative;
+                top: 10px;
+                left: 12px;
+              }
+
+              input#file {
+                display: none;
+              }
+            }
           }
         }
       }
@@ -174,6 +224,7 @@ section.profile {
         height: 100%;
         margin: auto;
         width: 900px;
+              background-color: #FFFFFF;
         
         div.banner {
           background-color: #A4303F;
@@ -193,8 +244,8 @@ section.profile {
       }
 
       div.chart-container {
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border-left: 1px solid rgb(206, 208, 212);
+        border-right: 1px solid rgb(206, 208, 212);
         height: 400px;
 
         .weight-chart {
