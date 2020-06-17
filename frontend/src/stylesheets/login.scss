@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
 
-div.login-form-container {
-  height: 250px;
+.login-form-container {
   width: 500px;
   background-color: #FFFFFF;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 
-  span.login {
+  span.login-text {
     display: block;
     text-align: center;
     padding: 20px 0px;
@@ -15,35 +16,39 @@ div.login-form-container {
     font-weight: 500;
   }
 
-  form {
-    div.login-form {
-      display: flex;
-      flex-direction: column;
-      // width: 500px;
-      padding: 0 100px;
-      margin: 0 0 -44px 0;
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 100px;
 
-      input, button {
-        height: 30px;
-        width: 300px;
-        margin: 0 0 14px 0;
-        font-family: Montserrat;
-        border-radius: 3px;
-        border: 1px solid #000000;
-      }
+    input {
+      height: 30px;
+      width: 293px;
+      margin: 0;
+      padding: 0 0 0 5px;
+      font-family: Montserrat;
+      border-radius: 3px;
+      border: 1px solid #000000;
+    }
 
-      input {
-        padding: 0 0 0 4px;
-      }
+    .login {
+      font-family: Montserrat;
+      font-size: 16px;
+      height: 30px;
+      width: 300px;
+      border-radius: 3px;
+      margin: 0;
+      border: 1px solid #000000;
+    }
 
-      button {
-        width: 306px;
-      }
+    .error-border {
+      border: 1px solid rgb(252, 13, 27)
     }
   }
 
-  div.signup-here {
-    margin: 4px 100px;
+  .login-here {
+    margin: 5px 100px 0px;
+    padding-bottom: 20px;
 
     span.btn {
       color: blue;
@@ -54,4 +59,16 @@ div.login-form-container {
       text-decoration: underline;
     }
   }
+}
+
+.signup-errors {
+  height: 15px;
+  padding: 3px 0px;
+  font-family: Montserrat;
+  font-size: 13px;
+  color: #BE4B49;
+}
+
+.hidden {
+    visibility:hidden
 }

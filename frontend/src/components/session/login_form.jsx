@@ -9,11 +9,16 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      errors: this.props.errors
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+  }
+
+  componentDidUpdate(prevProp) {
+    if(prevProp.errors !== this.props.errors) {
+      this.setState({errors: this.props.errors});
+    }
   }
 
   update(field) {
@@ -30,19 +35,13 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
-  }
-
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
+    this.props.login(user).then( err => {
+      if (err.errors) {
+        this.props.openModal("login");
+      } else {
+        this.props.closeModal();
+      }
+    });
   }
 
   render() {
@@ -50,24 +49,30 @@ class LoginForm extends React.Component {
 
     return (
       <div className="login-form-container">
-        <span className="login">Welcome Back!</span>
-        <form onSubmit={this.handleSubmit}>
-          <div className="login-form">
+        <span className="login-text">Welcome Back!</span>
+        <form className="login-form"onSubmit={this.handleSubmit}>
+
             <input type="text"
+              className={Object.keys(this.state.errors).includes('login_email') ? "error-border" : ""}
               value={this.state.email}
               onChange={this.update('email')}
               placeholder="Email"
             />
+            <div className={Object.keys(this.state.errors).includes('login_email') ? "signup-errors" : "signup-errors hidden"}>Invalid email.</div>
+
             <input type="password"
+              className={Object.keys(this.state.errors).includes('login_password') ? "error-border" : ""}
               value={this.state.password}
               onChange={this.update('password')}
               placeholder="Password"
             />
-            <button>Login</button>
-            {this.renderErrors()}
-          </div>
+            <div className={Object.keys(this.state.errors).includes('login_password') ? "signup-errors" : "signup-errors hidden"}>Invalid password.</div>
+
+            <button className="login" onClick={this.handleSubmit}>Login</button>
+
         </form>
-        <div className="signup-here">
+
+        <div className="login-here">
           <span>Don't have an account? Sign up </span>
           <span className="btn"
             onClick={() => openModal('signup')}>here</span>
