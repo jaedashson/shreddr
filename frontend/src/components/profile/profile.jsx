@@ -117,10 +117,10 @@ class Profile extends React.Component {
               <div className="update-weight">
                 <span className="text">Update New Weight</span>
                 <form onSubmit={this.handleSubmit}>
-                  <label className="weight">Weight: 
-                    <input type="text" onChange={this.update('weight')}/>
-                  </label>
-
+                  <div className="weight-wrapper">
+                    <label className="weight">Weight: </label>
+                    <input type="text" onChange={this.update('weight')} />
+                  </div>
                   <div className="weight-date">
                     <span className="weight-text">Date: </span>
                     <div className="weight-r2">

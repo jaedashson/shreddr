@@ -6,6 +6,7 @@ import SplashContainer from './splash/splash_container';
 import ModalContainer from './modal/modal_container';
 import ProfileContainer from './profile/profile_container';
 import NavbarContainer from './splash/navbar_container';
+import TrainingContainer from './training/training_container';
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={SplashContainer} />
       <Route exact path="/users/:userId" component={ProfileContainer} />
+      <Route exact path="/training" component={TrainingContainer} />
     </Switch>
   </div>
 );

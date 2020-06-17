@@ -5,7 +5,7 @@ const BodyweightReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_WEIGHT:
-      newState[action.newWeight.data._id] = action.newWeight.data;
+      newState[action.bodyweight.data._id] = action.bodyweight.data;
       return newState;
     default:
       return state;

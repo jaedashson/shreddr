@@ -42,7 +42,10 @@ class Navbar extends React.Component {
           </Link>
 
           <div className="center">
+            <Link to='/training'
+              style={{ textDecoration: 'none', color: 'black' }}>
             <span>Training</span>
+            </Link>
             <div className="border"></div>
             <span>Gym Finder</span>
             <div className="border"></div>
