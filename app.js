@@ -18,16 +18,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-
-// app.get("/", (req, res) => {
-//   const user = new User({
-//     handle: "jim",
-//     email: "jim@jim.jim",
-//     password: "jimisgreat123"
-//   })
-//   user.save();
-//   res.send("Hello World!");
-// });
+app.get("/", (req, res) => {
+});
 
 app.use("/api/users", users);
 app.use("/api/exercises", exercises);
