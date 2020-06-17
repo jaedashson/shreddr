@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue');
+
+section.profile {
+
+  div.profile-nav {
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    
+    div {
+      margin: auto;
+      width: 900px;
+
+      span {
+        color: white;
+        font-family: Bebas Neue;
+        font-size: 24px;
+      }
+    }
+  }
+
+  section.main {
+    height: 300px;
+    font-family: Bebas Neue;
+
+    div.row-1-container {
+      width: 100%;
+      height: 300px; 
+
+      div.row-1 {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        width: 898px;
+        height: 300px;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        
+        div.left {
+          display: flex;
+          margin: 0;
+          height: 300px;
+          width: 550px;
+          // border-right: 1px solid black;
+  
+          div.left-left {
+            width: 200px;
+            
+            div.pfp {
+              // background-image: currentUser's pfp;
+              height: 200px;
+              margin: 20px;
+              width: 160px;
+              border: 1px solid black;
+            }
+    
+            div {
+              display: flex;
+              justify-content: center;
+              span {
+                color: #000;
+                // font-family: Bebas Neue;
+                font-size: 20px;
+              }
+            }
+          }
+
+          div.left-right {
+            height: 300px;
+            width: 350px;
+
+            div {
+              margin: 40px 20px;
+
+              span {
+                line-height: 1.5;
+                font-size: 20px;
+                display: block;
+              }
+            }
+          }
+  
+        }
+  
+        div.right {
+          display: flex;
+          justify-content: center;
+          border-left: 1px solid lightslategrey;
+          height: 260px;
+          width: 350px;
+          margin: 20px;
+
+          span {
+            display: block;
+            font-size: 24px;
+          }
+        }
+      }
+    }
+
+    div.update-container {
+      height: 140px;
+      width: 100%;
+
+      div.update {
+        border: 1px solid black;
+        border-top: 2px solid black;
+        display: flex;
+        height: 100%;
+        margin: auto;
+        width: 898px;
+
+        div.update-weight, div.upload-photos {
+          width: 50%;
+        }
+      }
+    }
+
+    div.progress-tracker-container {
+      height: 500px;
+      width: 100%;
+
+      div.progress-tracker {
+        height: 100%;
+        margin: auto;
+        width: 900px;
+        
+        div.banner {
+          background-color: #A4303F;
+          border-left: 1px solid #A4303F;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+
+          span {
+            color: white;
+            font-family: Bebas Neue;
+            font-size: 24px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      div.chart-container {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        height: 400px;
+
+        .weight-chart {
+          // margin: auto;
+          padding-top: 40px;
+        }
+      }
+    }
+
+  }
+}
