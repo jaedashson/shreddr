@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import Root from './components/root.jsx';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';

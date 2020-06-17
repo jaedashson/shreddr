@@ -1,17 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/splash.scss';
-import Navbar from './navbar.jsx';
 
 class Splash extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
  
   render() {
-
+    
     return (
       <section className="splash">
 

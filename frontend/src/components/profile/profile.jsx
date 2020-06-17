@@ -1,9 +1,8 @@
 import React from 'react';
 import { 
   withRouter,
-  Link 
 } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/profile.scss';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
@@ -23,10 +22,46 @@ class Profile extends React.Component {
       weight: '',
       date: `${this.year}-${this.month}-${this.day}`,
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchUserProfile(this.props.match.params.userId);
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
+  updateYear(field) {
+    return e => {
+      if (field === 'month') {
+        this.month = e.target.value;
+      } else if (field === 'year') {
+        this.year = e.target.value;
+      } else {
+        this.day = e.target.value;
+      }
+      return this.setState({ date: `${this.year}-${this.month}-${this.day}` });
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let weight = {
+      user: this.state.user,
+      weight: this.state.weight,
+      date: this.state.date,
+    };
+
+    this.props.addNewWeight(weight);
   }
 
   render() {
-    const { logout, addNewWeight, currentUser } = this.props;
+    const { currentUser, user } = this.props;
 
     const data = [{ date: '6/5', weight: 178, pv: 2400, amt: 2400 }, { date: '6/10', weight: 174, pv: 2500, amt: 2500 }, { date: '6/15', weight: 169, pv: 2200, amt: 2200 }];
 
@@ -42,22 +77,91 @@ class Profile extends React.Component {
     // <YAxis type="number" domain={['dataMin-5', 'dataMax+5']} tick={{ fill: 'white', fontSize: 12 }} />
 
     let addWeightPhotos;
-    if (currentUser.id && currentUser.id === this.props.match.params.userId) {
+    if (currentUser && currentUser.id === this.props.match.params.userId) {
+      const years = ['Year']
+      for (let i = 2020; i >= 2010; i--) {
+        years.push(i);
+      }
+
+      const days = ['Day']
+      for (let i = 1; i <= 31; i++) {
+        days.push(i);
+      }
+
+      const months = ["Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      const weightYears = years.map(year => {
+        return <option key={year} value={year}>{year}</option>
+      })
+
+      const weightDays = days.map(day => {
+        return <option key={day} value={day}>{day}</option>;
+      })
+
+      const weightMonths = months.map((month, idx) => {
+        return <option key={month} value={idx}>{month}</option>;
+      })
+
       addWeightPhotos = (
         <div className="update-container">
           <div className="update">
-            <div className="update-weight">
-              <span>Update New Weight</span>
+            <div className="update-weight-container">
+              <div className="update-weight">
+                <span className="text">Update New Weight</span>
+                <form onSubmit={this.handleSubmit}>
+                  <label className="weight">Weight: 
+                    <input type="text"
+                      onChange={this.update('weight')}/>
+                  </label>
+
+                  <div className="weight-date">
+                    <span className="weight-text">Date: </span>
+                    <div className="weight-r2">
+                      <select
+                        name={this.state.month}
+                        className="weight-month"
+                        onChange={this.updateYear("month")}
+                        value={this.state.date.split('-')[1]}
+                      >
+                        {weightMonths}
+                      </select>
+
+                      <select
+                        name={this.state.day}
+                        className="weight-day"
+                        onChange={this.updateYear("day")}
+                        value={this.state.date.split('-')[2]}
+                      >
+                        {weightDays}
+                      </select>
+
+                      <select
+                        name={this.state.year}
+                        className="weight-year"
+                        onChange={this.updateYear("year")}
+                        value={this.state.date.split('-')[0]}
+                      >
+                        {weightYears}
+                      </select>
+                    </div>  
+                  </div>
+
+                  <button>Track Weight</button>
+                </form>
+              </div>
             </div>
-            <div className="upload-photos">
-              <span>Upload Progress Photos</span>
+            <div className="upload-photos-container">
+              <div className="upload-photos">
+
+                <span>Upload Progress Photos</span>
+              </div>
             </div>
           </div>
         </div>
       )
     }
 
-    return(
+    return (
       <section className="profile">
         <div className="profile-nav">
           <div>
@@ -75,8 +179,7 @@ class Profile extends React.Component {
                   </div>
 
                   <div>
-                  <span className="name">Tiffany</span>
-                    {/* change to currentUser's fname */}
+                    <span className="name">{user ? user.fName : ''}</span>
                   </div>
                 </div>
 
@@ -96,19 +199,7 @@ class Profile extends React.Component {
 
               <div className="line"></div>
             </div>
-
           </div>
-
-          {/* <div className="update-container">
-            <div className="update">
-              <div className="update-weight">
-                <span>Update New Weight</span>
-              </div>              
-              <div className="upload-photos">
-                <span>Upload Progress Photos</span>
-              </div>              
-            </div>
-          </div> */}
 
           {addWeightPhotos}
           

@@ -4,7 +4,6 @@ import { closeModal, openModal } from '../../actions/modal_actions'
 import SignupForm from './signup_form.jsx';
 
 const mapStateToProps = state => ({
-    signedIn: state.session.isSignedIn,
     errors: state.errors.session
 });
 

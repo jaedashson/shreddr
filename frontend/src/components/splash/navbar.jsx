@@ -6,10 +6,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { openModal, isAuthenticated, logout } = this.props;
 
