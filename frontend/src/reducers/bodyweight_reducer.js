@@ -1,4 +1,4 @@
-import { RECEIVE_WEIGHT } from '../actions/weight_actions';
+import { RECEIVE_WEIGHT } from '../actions/bodyweight_actions';
 
 const WeightReducer = (state = {}, action) => {
   Object.freeze(state);

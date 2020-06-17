@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 // import { closeModal, openModal } from '../../actions/modal_actions'
 import Profile from './profile.jsx';
-import { addNewWeight } from '../../actions/weight_actions';
+import { addNewWeight } from '../../actions/bodyweight_actions';
 import { fetchUserProfile } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => ({

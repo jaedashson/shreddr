@@ -1,4 +1,4 @@
-import { addWeight } from '../util/weight_api_util';
+import { addWeight } from '../util/bodyweight_api_util';
 
 export const RECEIVE_WEIGHT = 'RECEIVE_WEIGHT';
 
