@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    login: user => dispatch(login(user)),
+    login: user => { return dispatch(login(user)) },
     closeModal: () => dispatch(closeModal()),
     openModal: modal => dispatch(openModal(modal))
 })

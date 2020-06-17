@@ -21,7 +21,6 @@ import {
 library.add(fab, faUser, faUserCircle, faUpload);
 
 
-// import App from './App';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (decodedUser.exp < currentTime) {
       store.dispatch(logout());
-      window.location.href = '/login';
     }
   } else {
     store = configureStore({});

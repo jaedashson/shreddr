@@ -45,4 +45,12 @@ router.post("/:user_id", (req, res) => {
     });
 })
 
+// GET /api/bodyweights/:user_id
+router.get("/:user_id", (req, res) => {
+    Bodyweight.find({ user: req.params.user_id })
+        .sort({ date: -1 })
+        .then(bodyweights => res.json(bodyweights))
+        .catch(err => res.status(404).json({ noBodyweightsFound: "No bodyweights found from that user"}))
+})
+
 module.exports = router;

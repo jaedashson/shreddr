@@ -62,9 +62,13 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user).then(() => this.props.closeModal()).catch(() => this.props.openModal('signup'));
-
-    // this.props.closeModal();
+    this.props.signup(user).then( err => {
+      if (err.errors) {
+        this.props.openModal('signup');
+      } else {
+        this.props.closeModal();
+      }
+    })
   }
 
   render() {
@@ -190,11 +194,10 @@ class SignupForm extends React.Component {
               </div>  
             </div>
           </div>
-          <button className="signup"
-            onClick={this.handleSubmit}>Sign Up</button>
+          <button className="signup" onClick={this.handleSubmit}>Sign Up</button>
         </form>
 
-        <div className="login-here">
+        <div className="signup-here">
           <span>Already have an account? Sign in </span>
           <span className="btn"
             onClick={() => openModal('login')}>here</span>
