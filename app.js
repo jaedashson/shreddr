@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -7,10 +8,20 @@ const User = require("./models/User");
 const bodyParser = require("body-parser");
 const exercises = require('./routes/api/exercises');
 
+// passport?
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to mongoDB"))
   .catch(err => console.log(err));
+
+// Is the correct way to deploy to Heroku?
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.use(bodyParser.urlencoded({
   extended: false
