@@ -25,8 +25,12 @@ class Profile extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.fetchUserProfile(this.props.match.params.userId);
+  }
+
   render() {
-    const { logout, addNewWeight, currentUser } = this.props;
+    const { logout, addNewWeight, currentUser, user } = this.props;
 
     const data = [{ date: '6/5', weight: 178, pv: 2400, amt: 2400 }, { date: '6/10', weight: 174, pv: 2500, amt: 2500 }, { date: '6/15', weight: 169, pv: 2200, amt: 2200 }];
 
@@ -57,7 +61,7 @@ class Profile extends React.Component {
       )
     }
 
-    return(
+    return (
       <section className="profile">
         <div className="profile-nav">
           <div>
@@ -75,8 +79,7 @@ class Profile extends React.Component {
                   </div>
 
                   <div>
-                  <span className="name">Tiffany</span>
-                    {/* change to currentUser's fname */}
+                    <span className="name">{user ? user.fName : ''}</span>
                   </div>
                 </div>
 

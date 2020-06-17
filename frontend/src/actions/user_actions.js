@@ -7,7 +7,7 @@ export const receiveUser = user => ({
   user
 });
 
-export const getUser = userId => dispatch => (
+export const fetchUserProfile = userId => dispatch => (
   fetchUser(userId)
     .then(user => dispatch(receiveUser(user)))
     .catch(err => console.log(err))
