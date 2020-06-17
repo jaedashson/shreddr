@@ -180,7 +180,7 @@ class SignupForm extends React.Component {
                 </select>
 
                 <select
-                  name={this.state.day}
+                  name={this.state.year}
                   className="signup-year"
                   onChange={this.updateDob("year")}
                   value={this.state.dob.split('-')[0]}

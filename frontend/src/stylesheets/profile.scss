@@ -39,9 +39,9 @@ section.profile {
         
         div.left {
           display: flex;
-          margin: 0;
+          margin: 10px 20px;
           height: 300px;
-          width: 550px;
+          width: 500px;
           // border-right: 1px solid black;
   
           div.left-left {
@@ -71,7 +71,7 @@ section.profile {
             width: 350px;
 
             div {
-              margin: 40px 20px;
+              margin: 40px;
 
               span {
                 line-height: 1.5;
@@ -88,7 +88,7 @@ section.profile {
           justify-content: center;
           border-left: 1px solid lightslategrey;
           height: 260px;
-          width: 350px;
+          width: 400px;
           margin: 20px;
 
           span {
@@ -100,7 +100,7 @@ section.profile {
     }
 
     div.update-container {
-      height: 140px;
+      height: 200px;
       width: 100%;
 
       div.update {
@@ -111,8 +111,57 @@ section.profile {
         margin: auto;
         width: 898px;
 
-        div.update-weight, div.upload-photos {
+        div.update-weight-container {
+          border-right: 1px solid lightslategrey;
+        }
+
+        div.update-weight-container {
           width: 50%;
+          height: 84%;
+          margin-top: 10px;
+
+          div.update-weight {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+
+            span.text {
+              font-size: 24px;
+              padding: 0 0 6px 0;
+            }
+
+            form {
+              font-size: 18px;
+              label.weight {
+                input {
+                  margin: 0 0 0 4px;
+                }
+              }
+
+              div.weight-date {
+                display: flex;
+                flex-direction: column;
+              }
+            }
+          }
+        }
+
+        div.upload-photos-container {
+          width: 50%;
+          height: 84%;
+          margin-top: 10px;
+
+          div.upload-photos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+
+            span {
+              font-size: 24px;
+            }
+          }
         }
       }
     }
