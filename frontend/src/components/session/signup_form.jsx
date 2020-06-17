@@ -63,7 +63,6 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user).then( err => {
-      debugger
       if (err.errors) {
         this.props.openModal('signup');
       } else {

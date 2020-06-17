@@ -41,7 +41,7 @@ export const login = user => dispatch => (
     return dispatch(receiveCurrentUser(decoded))
   }, err => (
       dispatch(receiveErrors(err.response.data))
-    ))
+  ))
 )
 
 export const logout = () => dispatch => {

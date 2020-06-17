@@ -36,7 +36,6 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user).then( err => {
-      debugger;
       if (err.errors) {
         this.props.openModal("login");
       } else {
