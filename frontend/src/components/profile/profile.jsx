@@ -16,11 +16,11 @@ class Profile extends React.Component {
     this.month = date.getMonth() + 1;
     this.year = date.getFullYear();
     
-    const { currentUser, user } = props;
+    const { currentUser, user, userBodyweights } = props;
     
     if (user && user.bodyweights) {
       this.state = {
-        bodyweights: user.bodyweights,
+        bodyweights: userBodyweights,
         user: currentUser.id,
         weight: '',
         date: `${this.year}-${this.month}-${this.day}`,
@@ -37,15 +37,6 @@ class Profile extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.user !== this.props.user || prevProps.user.bodyweights !== this.props.user.bodyweights ) {
-      // return this.setState({ bodyweights: this.props.user.bodyweights });
-      this.props.fetchUserWeights(this.props.match.params.userId);
-    }
-
-    // debugger;
   }
 
   componentDidMount() {
@@ -80,19 +71,20 @@ class Profile extends React.Component {
       date: this.state.date,
     };
 
-    this.props.addNewWeight(weight);
+    this.props.addNewWeight(weight)
+      .then(() => this.props.fetchUserWeights(this.props.match.params.userId));
   }
 
   render() {
-    const { currentUser, user } = this.props;
+    const { currentUser, user, userBodyweights } = this.props;
 
     if (!user) {
       return null;
     }
 
     let data = [], weights = [], minWeight, maxWeight, renderLineChart, ticks;
-    if (user.bodyweights && user.bodyweights.length > 0) {
-      let userWeights = user.bodyweights.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+    if (userBodyweights && userBodyweights.length > 0) {
+      let userWeights = userBodyweights.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
       for (let i = 0; i < userWeights.length; i++) {
         let w = userWeights[i];
         let date = new Date(w.date);

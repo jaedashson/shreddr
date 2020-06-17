@@ -7,6 +7,7 @@ import { fetchUserProfile } from '../../actions/user_actions';
 const mapStateToProps = (state, ownProps) => {
   // debugger;
   if (state.entities.users[ownProps.match.params.userId]) {
+    debugger;
     return {
       currentUser: state.session.user,
       isAuthenticated: state.session.isAuthenticated,
