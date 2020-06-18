@@ -1,14 +1,17 @@
+require("dotenv").config();
 const path = require('path');
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const db = require("./confg/keys").mongoURI;
-const users = require("./routes/api/users");
+const users = require("./routes/api/users"); // fileUploadRoutes
 const User = require("./models/User");
 const bodyParser = require("body-parser");
 const exercises = require('./routes/api/exercises');
 const workouts = require('./routes/api/workouts');
 const bodyweights = require('./routes/api/bodyweights');
+const progressPics = require('./routes/api/progressPics');
+// const cors = require("cors");
 
 // passport?
 
@@ -38,6 +41,7 @@ app.use("/api/users", users);
 app.use("/api/exercises", exercises);
 app.use("/api/workouts", workouts);
 app.use("/api/bodyweights", bodyweights);
+app.use("/api/progressPics", progressPics);
 
 const port = process.env.PORT || 5000;
 
