@@ -46,8 +46,12 @@ class Navbar extends React.Component {
               style={{ textDecoration: 'none', color: 'black' }}>
             <span>Training</span>
             </Link>
+
             <div className="border"></div>
+            <Link to="/gym-finder"
+              style={{ textDecoration: 'none', color: 'black' }}>
             <span>Gym Finder</span>
+            </Link>
             <div className="border"></div>
             <span>Forum</span>
           </div>
