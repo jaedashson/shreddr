@@ -3,6 +3,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import '../../stylesheets/training.scss';
+import { wrapGrid } from 'animate-css-grid'
 
 const EQUIPMENT = [
   "Barbell",
@@ -59,6 +60,8 @@ class Training extends React.Component {
   }
 
   componentDidMount() {
+    const grid = document.querySelector(".exercises-list");
+    wrapGrid(grid);
     this.props.fetchExercises()
       .then(() => this.setState({ exercises: this.props.exercises }));
   }
@@ -170,12 +173,20 @@ class Training extends React.Component {
         return (
           <li key={e._id}
             className="filtered-exercise">
-            <span>Exercise: {e.name}</span>
-            <span>Difficulty: 
-              <span className={e.difficulty}>{e.difficulty}</span>
-            </span>
-            <span>Equipment: {equipText}</span>
-            <span>Muscle Group(s): {e.muscleGroups.join(', ')}</span>
+            <div>
+              <span>Exercise: 
+                <span>{e.name}</span>
+              </span>
+              <span>Difficulty: 
+                <span className={e.difficulty}>{e.difficulty}</span>
+              </span>
+              <span>Equipment: 
+                <span>{equipText}</span>
+              </span>
+              <span>Muscle Group(s): 
+                <span>{e.muscleGroups.join(', ')}</span>
+              </span>
+            </div>
           </li>
         )
       })
