@@ -10,10 +10,3 @@ router.post("/api/workouts/generate", (req, res) => {
 
     })
 })
-
-// POST /api/workouts/generate
-// params = {
-//   equipment: ["barbell", "dumbbell"],
-//   difficulty: "intermediate",
-//   muscleGroups: ["chest", "bicep"]
-// }

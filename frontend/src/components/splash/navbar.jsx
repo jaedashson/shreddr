@@ -11,24 +11,26 @@ class Navbar extends React.Component {
 
     let btn;
     if (isAuthenticated) {
+      const firstName = this.props.currentUser.fName.charAt(0).toUpperCase() + this.props.currentUser.fName.slice(1);
       btn = (
         <>
-          <Link to={`/users/${currentUser.id}`}><FontAwesomeIcon className="nav-bar-profile-icon" icon="user-circle" /></Link>
-          <button>
-            <span className="btn-text"
-              onClick={() => logout()}
-            >Logout</span>
+          <Link to={`/users/${currentUser.id}`} style={{ textDecoration: 'none' }}>
+            <div className="profile-wrapper">
+              <FontAwesomeIcon className="nav-bar-profile-icon" icon="user-circle" />
+              <div className="nav-name">{firstName}</div>
+            </div>
+          </Link>
+          <button className="logout-btn">
+            <span className="btn-text" onClick={() => logout()}>Logout</span>
           </button>
         </>
       )
 
     } else {
       btn = (
-        <button>
-          <FontAwesomeIcon icon={['far', 'user']}
-            className="fa-user" />
-          <span className="btn-text"
-            onClick={() => openModal('signup')}>Join Now</span>
+        <button className="login-btn">
+          <FontAwesomeIcon icon={['far', 'user']} className="fa-user" />
+          <span className="btn-text" onClick={() => openModal('signup')}>Join Now</span>
         </button>
       )
     }

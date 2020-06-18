@@ -115,21 +115,17 @@ class Profile extends React.Component {
           <Line type="monotone" dataKey="weight" stroke="#000000" />
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
           <XAxis dataKey="date" />
-          {/* <YAxis /> */}
           <YAxis type="number" 
             domain={[minWeight - 10, maxWeight + 10]} 
             ticks={yDomain} 
-            // dataKey="weight"
-            // interval={0}
-            // label={{ value: 'weight', angle: -90, position: 'insideLeft' }}
             />
           <Tooltip />
         </LineChart>
       );
     } else if (user.bodyweights.length === 0) {
       renderLineChart = (
-        <div>
-          <span>wuh-woh! wooks wike you don't have any weights. pwease add a new weight to twack your pwogwess!</span>
+        <div className="nchart-error-wrapper">
+          <span className="nchart-error">wuh-woh! wooks wike you don't have any weights. pwease add a new weight to twack your pwogwess!</span>
         </div>
       )
     }

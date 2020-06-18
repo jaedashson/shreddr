@@ -17,10 +17,6 @@ router.get("/", (req, res) => {
 router.post("/",
 
     (req, res) => {
-        // Validate exercise
-        // (If not valid)
-
-        // If exercise is valid...
         const newExercise = new Exercise({
             name: req.body.name,
             equipment: req.body.equipment,
