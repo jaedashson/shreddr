@@ -11,6 +11,9 @@ const exercises = require('./routes/api/exercises');
 const workouts = require('./routes/api/workouts');
 const bodyweights = require('./routes/api/bodyweights');
 const cors = require("cors");
+
+
+app.use(cors());
 // route
 
 // passport?
@@ -36,6 +39,7 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
 });
+
 
 app.use("/api/users", users);
 app.use("/api/exercises", exercises);
