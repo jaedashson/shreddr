@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Bodyweight = require('../../models/Bodyweight');
-const passport = require('passport')
+const passport = require('passport');
 
 // // POST /api/bodyweights/users/:user_id/bodyweight
 // router.post(
@@ -41,7 +41,7 @@ router.post("/:user_id", (req, res) => {
     })
 
     newBodyweight.save().then(bodyweight => {
-        return res.json(bodyweight)
+        return res.json(bodyweight);
     });
 })
 
