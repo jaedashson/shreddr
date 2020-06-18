@@ -11,17 +11,16 @@ import { logout } from './actions/session_actions';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-// import {
- 
-// } from '@fortawesome/free-solid-svg-icons';
 import {
-  faUser
+  faUserCircle, faUpload
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser, 
 } from '@fortawesome/free-regular-svg-icons';
 
-library.add(fab, faUser);
+library.add(fab, faUser, faUserCircle, faUpload);
 
 
-// import App from './App';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (decodedUser.exp < currentTime) {
       store.dispatch(logout());
-      window.location.href = '/login';
     }
   } else {
     store = configureStore({});

@@ -5,6 +5,7 @@ import {
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/profile.scss';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -14,20 +15,33 @@ class Profile extends React.Component {
     this.day = date.getDate();
     this.month = date.getMonth() + 1;
     this.year = date.getFullYear();
-
-    const { currentUser } = props;
-
-    this.state = {
-      user: currentUser.id,
-      weight: '',
-      date: `${this.year}-${this.month}-${this.day}`,
+    
+    const { currentUser, user, userBodyweights } = props;
+    
+    if (user && user.bodyweights) {
+      this.state = {
+        bodyweights: userBodyweights,
+        user: currentUser.id,
+        weight: '',
+        date: `${this.year}-${this.month}-${this.day}`,
+        uploadFile: "upload-input"
+      } 
+    } else {
+      this.state = {
+        bodyweights: '',
+        user: currentUser.id,
+        weight: '',
+        date: `${this.year}-${this.month}-${this.day}`,
+        uploadFile: "upload-input"
+      } 
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchUserProfile(this.props.match.params.userId);
+    this.props.fetchUserProfile(this.props.match.params.userId)
+      .then(action => this.props.fetchUserWeights(action.user.data._id));
   }
 
   update(field) {
@@ -57,24 +71,69 @@ class Profile extends React.Component {
       date: this.state.date,
     };
 
-    this.props.addNewWeight(weight);
+    this.props.addNewWeight(weight)
+      .then(() => this.props.fetchUserWeights(this.props.match.params.userId));
   }
 
   render() {
-    const { currentUser, user } = this.props;
+    const { currentUser, user, userBodyweights } = this.props;
 
-    const data = [{ date: '6/5', weight: 178, pv: 2400, amt: 2400 }, { date: '6/10', weight: 174, pv: 2500, amt: 2500 }, { date: '6/15', weight: 169, pv: 2200, amt: 2200 }];
+    if (!user) {
+      return null;
+    }
 
-    const renderLineChart = (
-      <LineChart width={870} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }} className="weight-chart">
-        <Line type="monotone" dataKey="weight" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
-    );
-    // <YAxis type="number" domain={['dataMin-5', 'dataMax+5']} tick={{ fill: 'white', fontSize: 12 }} />
+    let data = [], weights = [], minWeight, maxWeight, renderLineChart, ticks, yaxis;
+    if (userBodyweights && userBodyweights.length > 0) {
+      let userWeights = userBodyweights.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+      for (let i = 0; i < userWeights.length; i++) {
+        let w = userWeights[i];
+        let date = new Date(w.date);
+        let m = date.getMonth() + 1;
+        let d = date.getDate();
+        let y = date.getFullYear();
+        data.push({date: `${m}/${d}/${y}`, weight: w.weight});
+        weights.push(w.weight);
+      }
+
+      minWeight = Math.min(...weights) - 10;
+      maxWeight = Math.max(...weights) + 10;
+      let yDomain = [];
+      const freq = (maxWeight - minWeight) / 8;
+      let startDomain = minWeight - freq;
+      
+      for(let i = 0; i < 10; i++) {
+        yDomain.push(Math.floor(startDomain));
+        startDomain += freq;
+      }
+
+      renderLineChart = (
+        <LineChart width={870} 
+          height={300} 
+          data={data} 
+          margin={{ top: 5, right: 20, bottom: 5, left: 0 }} 
+          className="weight-chart">
+          <Line type="monotone" dataKey="weight" stroke="#000000" />
+          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+          <XAxis dataKey="date" />
+          {/* <YAxis /> */}
+          <YAxis type="number" 
+            domain={[minWeight - 10, maxWeight + 10]} 
+            ticks={yDomain} 
+            // dataKey="weight"
+            // interval={0}
+            // label={{ value: 'weight', angle: -90, position: 'insideLeft' }}
+            />
+          <Tooltip />
+        </LineChart>
+      );
+    } else if (user.bodyweights.length === 0) {
+      renderLineChart = (
+        <div>
+          <span>wuh-woh! wooks wike you don't have any weights. pwease add a new weight to twack your pwogwess!</span>
+        </div>
+      )
+    }
+
 
     let addWeightPhotos;
     if (currentUser && currentUser.id === this.props.match.params.userId) {
@@ -109,10 +168,11 @@ class Profile extends React.Component {
               <div className="update-weight">
                 <span className="text">Update New Weight</span>
                 <form onSubmit={this.handleSubmit}>
-                  <label className="weight">Weight: 
-                    <input type="text"
-                      onChange={this.update('weight')}/>
-                  </label>
+
+                  <div className="weight-wrapper">
+                    <label className="weight">Weight: </label>
+                    <input type="text" onChange={this.update('weight')} />
+                  </div>
 
                   <div className="weight-date">
                     <span className="weight-text">Date: </span>
@@ -146,7 +206,7 @@ class Profile extends React.Component {
                     </div>  
                   </div>
 
-                  <button>Track Weight</button>
+                  <button className="track-weight-btn">Track Weight</button>
                 </form>
               </div>
             </div>
@@ -154,6 +214,17 @@ class Profile extends React.Component {
               <div className="upload-photos">
 
                 <span>Upload Progress Photos</span>
+                <label className="upload-btn"
+                  // onClick={this.handleUploadClick}
+                  >
+                  <FontAwesomeIcon className="upload-btn" 
+                    icon="upload" />
+                  <input className={this.state.uploadFile}
+                    type="file"
+                    id="file"
+                    onChange={this.handleUploadPic}
+                  />
+                </label>
               </div>
             </div>
           </div>
