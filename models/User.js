@@ -32,6 +32,9 @@ const UserSchema = new Schema({
   },
   bodyweights: {
     type: [Object]
+  },
+  progressPics: {
+    type: [Object]
   }
 });
 
