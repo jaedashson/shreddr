@@ -18,4 +18,47 @@ section.gym-finder {
       }
     }
   }
+
+  section.main {
+    background-color: rgb(240, 242, 245);
+    font-family: Bebas Neue;
+
+    div.container {
+      min-height: 450px; 
+      width: 100%;
+
+     div.inner-main {
+        background-color: #FFFFFF;
+        border-left: 1px solid rgb(206, 208, 212);
+        border-right: 1px solid rgb(206, 208, 212);
+        border-bottom: 2px solid rgb(206, 208, 212);
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        min-height: 428px;
+        width: 898px;
+        align-items: center;
+
+        span {
+          display: block;
+          font-size: 30px;
+          padding: 20px;
+        }
+
+        form {
+          input.google {
+            border: 1px solid #807f7e;
+            border-radius: 50px;
+            height: 30px;
+            padding: 0 0 0 16px;
+            width: 400px;
+          }
+
+          input.google::placeholder {
+            color: #b9b9ba;
+          }
+        }
+      }
+    }
+  }
 }

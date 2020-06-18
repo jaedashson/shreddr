@@ -6,6 +6,24 @@ import {
 import '../../stylesheets/gym_finder.scss';
 
 class GymFinder extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      google: '',
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  update(field) {
+    return e => this.setState({ [field]: e.target.value })
+  }
+
+  handleSubmit() {
+
+  }
+
   render() {
     return (
       <section className="gym-finder">
@@ -14,7 +32,19 @@ class GymFinder extends React.Component {
           <span>Locations</span>
           </div>
         </div>
-        <h3>Hello</h3>
+        <section className="main">
+          <div className="container">
+            <div className="inner-main">
+              <span>Find your nearest gym or park to start training</span>
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" 
+                  placeholder="Please type your address or zipcode and press enter"
+                  className="google"
+                  onChange={this.update('google')}/>
+              </form>
+            </div>
+          </div>
+        </section>
       </section>
     )
   }
