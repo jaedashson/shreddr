@@ -9,7 +9,7 @@ const benchPress = new Exercise({
 
 const dumbbellBicepCurl = new Exercise({
     name: "dumbbell bicep curl",
-    equipment: ["dumbbell"],
+    equipment: "dumbbell
     difficulty: "beginner",
     category: "free weight",
     muscleGroups: ["bicep"],
