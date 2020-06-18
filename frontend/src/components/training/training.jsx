@@ -171,7 +171,9 @@ class Training extends React.Component {
           <li key={e._id}
             className="filtered-exercise">
             <span>Exercise: {e.name}</span>
-            <span>Difficulty: {e.difficulty}</span>
+            <span>Difficulty: 
+              <span className={e.difficulty}>{e.difficulty}</span>
+            </span>
             <span>Equipment: {equipText}</span>
             <span>Muscle Group(s): {e.muscleGroups.join(', ')}</span>
           </li>
@@ -239,7 +241,7 @@ class Training extends React.Component {
 
           <div className="exercises">
             <div className="exercises-container">
-              <span>Get Pumped With These Exercises</span>
+              <span className="title">Get Pumped With These Exercises</span>
               <ul className="exercises-list">
                 {filtered}
               </ul>

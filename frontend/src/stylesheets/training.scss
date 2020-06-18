@@ -127,10 +127,49 @@ section.training {
         border-right: 1px solid rgb(206, 208, 212);
         border-bottom: 2px solid rgb(206, 208, 212);
 
-        span {
+        span.title {
           display: block;
           font-size: 24px;
           padding: 30px;
+        }
+
+        ul.exercises-list {
+          display: grid;
+          grid-template-columns: 400px 400px;
+          grid-gap: 20px 20px;
+
+          li.filtered-exercise {
+            border: 2px solid black;
+            border-radius: 4px;
+            height: 100px;
+            list-style: none;
+            padding: 20px;
+            width: 350px;
+
+            span {
+              display: block;
+              font-size: 20px;
+
+              span.beginner {
+                color: green;
+                display: inline-block;
+                padding: 0 0 0 4px;
+              }
+
+              span.intermediate {
+                color: rgb(255, 165, 0);
+                display: inline-block;
+                padding: 0 0 0 4px;
+              }
+
+              span.advanced {
+                color: red;
+                display: inline-block;
+                padding: 0 0 0 4px;
+              }
+            }
+
+          }
         }
       }
     }
