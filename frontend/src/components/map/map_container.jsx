@@ -69,20 +69,19 @@ class eMapContainer extends React.Component {
   render() {
     return (
       <Map
-        style={{ width: 1000, height: 500, position: "relative" }}
+        style={{ width: 500, height: 500, position: "relative" }}
         google={this.props.google}
-        zoom={13}
-        initialCenter={{ lat: 40.7128, lng: -74.006 }}
+        zoom={12}
+        initialCenter={{ lat: 40.752055, lng: -73.933856 }}
         onClick={this.toggleMapClose}
       >
         {this.displayMarkers()}
         <InfoWindow
           visible={this.state.isOpen}
           marker={this.state.activeMarker}
-          onOpen={() => console.log("opened!")}
         >
           <div className="infowindow-text">
-            <span>{this.state.selectedPlace.name}</span>
+            <span className="infowindow-name">{this.state.selectedPlace.name}</span>
           </div>
         </InfoWindow>
       </Map>
