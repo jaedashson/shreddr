@@ -38,9 +38,9 @@ router.post("/generate", (req, res) => {
     // Exercise.find().where({ muscleGroups: { $in : muscles } }).then( ex => res.json(ex)); 
     // Gets empty array
 
-    Exercise.find({
-        muscleGroups: req.body.muscleGroups
-    }).then(ex => res.json(ex)).catch(err => res.json(err)); 
+    // Exercise.find({
+    //     muscleGroups: req.body.muscleGroups
+    // }).then(ex => res.json(ex)).catch(err => res.json(err)); 
     // Gets exact muscleGroup matches
 
     // Exercise.find({
@@ -65,13 +65,26 @@ router.post("/generate", (req, res) => {
     //     .then(ex => res.json(ex))
     //     .catch(err => res.json(err));
 
-    const myFind = field => {
-        if (Exercise[field].includes(req.body.field)){
-            return Exercise;
-        }
-    }
+    // const myFind = field => {
+    //     if (Exercise[field].includes(req.body.field)){
+    //         // debugger;
+    //         return Exercise;
+    //     }
+        // debugger
+    // }
+    // debugger
+    // return myFind("muscleGroups").then(ex => res.json(ex)).catch(err => res.json(err))
+    const equipArr = [];
+    
+    availEquip.forEach(eq => {
+        if (req.body.equipment.includes(eq)) {
+            Exercise.find({
+                equipment: eq
+            }).then(ex => equipArr.push(ex)).then(() => res.json(equipArr));
 
-    return myFind(muscleGroups).then(ex => res.json(ex));
+        }
+    })
+    
 });
 
 module.exports = router;

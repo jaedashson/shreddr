@@ -19,7 +19,7 @@ router.post("/",
     (req, res) => {
         // Validate exercise
         // (If not valid)
-        debugger
+        // debugger
 
         // If exercise is valid...
         const newExercise = new Exercise({
