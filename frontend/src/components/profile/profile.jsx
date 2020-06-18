@@ -82,7 +82,7 @@ class Profile extends React.Component {
       return null;
     }
 
-    let data = [], weights = [], minWeight, maxWeight, renderLineChart, ticks, yaxis;
+    let data = [], weights = [], minWeight, maxWeight, renderLineChart;
     if (userBodyweights && userBodyweights.length > 0) {
       let userWeights = userBodyweights.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
       for (let i = 0; i < userWeights.length; i++) {

@@ -69,7 +69,7 @@ class eMapContainer extends React.Component {
   render() {
     return (
       <Map
-        style={{ width: 500, height: 500, position: "relative" }}
+        style={{ width: 800, height: 500, position: "relative" }}
         google={this.props.google}
         zoom={12}
         initialCenter={{ lat: 40.752055, lng: -73.933856 }}
