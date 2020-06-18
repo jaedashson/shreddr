@@ -247,10 +247,23 @@ section.profile {
         border-left: 1px solid rgb(206, 208, 212);
         border-right: 1px solid rgb(206, 208, 212);
         height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .weight-chart {
           // margin: auto;
           padding-top: 40px;
+        }
+        
+        .nchart-error-wrapper {
+          display: flex;
+          justify-content: center;
+          
+          .nchart-error {
+            font-size: 34px;
+            text-align: center;
+          }
         }
       }
     }
