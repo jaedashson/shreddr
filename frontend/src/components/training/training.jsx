@@ -148,7 +148,7 @@ class Training extends React.Component {
         filteredEquipment = filteredDifficulty;
       } else {
         filteredDifficulty.forEach(e => {
-          if (e.equipment.every(equip => this.state.equipment[equip.charAt(0).toUpperCase() + equip.slice(1)] === true)) {
+          if (e.equipment.every(equip => this.state.equipment[equip.split(' ').map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(' ')] === true)) {
             filteredEquipment.push(e);
           }
         });
@@ -159,7 +159,7 @@ class Training extends React.Component {
         filteredMuscleGroups = filteredEquipment;
       } else {
         filteredEquipment.forEach(e => {
-          if (e.muscleGroups.some(muscle => this.state.muscleGroups[muscle.charAt(0).toUpperCase() + muscle.slice(1)] === true)) {
+          if (e.muscleGroups.some(muscle => this.state.muscleGroups[muscle.split(' ').map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(' ')] === true)) {
             filteredMuscleGroups.push(e);
           }
         });
