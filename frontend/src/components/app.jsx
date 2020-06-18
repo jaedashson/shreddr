@@ -7,6 +7,7 @@ import ModalContainer from './modal/modal_container';
 import ProfileContainer from './profile/profile_container';
 import NavbarContainer from './splash/navbar_container';
 import TrainingContainer from './training/training_container';
+import Map from './map/map';
 
 const App = () => (
   <div>
