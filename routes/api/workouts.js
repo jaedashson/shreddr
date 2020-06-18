@@ -3,6 +3,8 @@ const router = express.Router();
 const Workout = require('../../models/Workout');
 const Exercise = require('../../models/Exercise');
 
+
+
 // POST /api/workouts/generate
 // params: muscleGroups, equipment, difficultyLevel
 router.post("/generate", (req, res) => {
@@ -21,16 +23,6 @@ router.post("/generate", (req, res) => {
     ]
     Object.freeze(difficultyLevel);
 
-    // debugger
-
-    // const newExercises = Exercise.find({
-    //     // equipment: { $in: availEquip }, // exclude all exercises that require a piece of equipment that is not in availEquip
-    //     // difficulty: { $in: difficultyLevel },
-    //     muscleGroups: { $in: muscles } 
-    // }).then(ex => res.json(ex)).catch(err => res.json(err))
-    // Exercise.find().then(ex => res.json(ex));
-    // Exercise.find( { muscleGroups : { $all: muscles }}).then( ex => res.json(ex))
-
     // WHAT WE'VE TRIED SO FAR
     // Exercise.find().then(ex => res.json(ex)); 
     // Gets all of the exercises
@@ -38,40 +30,24 @@ router.post("/generate", (req, res) => {
     // Exercise.find().where({ muscleGroups: { $in : muscles } }).then( ex => res.json(ex)); 
     // Gets empty array
 
-    Exercise.find({
-        muscleGroups: req.body.muscleGroups
-    }).then(ex => res.json(ex)).catch(err => res.json(err)); 
-    // Gets exact muscleGroup matches
+    // Exercise.find({
+    //     muscleGroups: req.body.muscleGroups
+    // }).then(ex => res.json(ex)).catch(err => res.json(err)); 
+    // Gets exact muscleGroups ["chest", "tricep", "anterior deltoid"]
 
     // Exercise.find({
     //     muscleGroups: { $elemMatch: req.body.muscleGroups  }
     // }).then(ex => res.json(ex)).catch(err => res.json(err)); 
     // Returns error
 
-    // Exercise.
     // Exercise.find({
-    //     muscleGroups: { $in: Exercise.muscleGroups }
+    //     muscleGroups: { $in: req.body.muscleGroups }
     // }).then(ex => res.json(ex)).catch(err => res.json(err));
+    // Gets exercises whose muscleGroups matches exactly ["bicep"]. Doesn't get pull-up
+    // ["chest"] returns nothing because there aren't any exercises whose muscleGroups is ["chest"]
 
-
-    //   .where({ muscleGroups: { $in: muscles } })
-    //   .then((ex) => res.json(ex));
-    // const query = Exercise.find();
-    // query.where(() => {return Exercise.equipment.includes(req.body.equipment)})
-
-    // Exercise.find()
-    //     .where('muscleGroups')
-    //     .in(req.body.muscleGroups)
-    //     .then(ex => res.json(ex))
-    //     .catch(err => res.json(err));
-
-    const myFind = field => {
-        if (Exercise[field].includes(req.body.field)){
-            return Exercise;
-        }
-    }
-
-    return myFind(muscleGroups).then(ex => res.json(ex));
+    // Exercise.find({ type: req.body.muscleGroups }).ne
+    Exercise.find({ muscleGroups: req.body.muscleGroups }).then(ex => res.json(ex)).catch(err => res.json(err));
 });
 
 module.exports = router;
