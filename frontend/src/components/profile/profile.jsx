@@ -82,7 +82,7 @@ class Profile extends React.Component {
       return null;
     }
 
-    let data = [], weights = [], minWeight, maxWeight, renderLineChart, ticks;
+    let data = [], weights = [], minWeight, maxWeight, renderLineChart, ticks, yaxis;
     if (userBodyweights && userBodyweights.length > 0) {
       let userWeights = userBodyweights.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
       for (let i = 0; i < userWeights.length; i++) {
@@ -97,6 +97,14 @@ class Profile extends React.Component {
 
       minWeight = Math.min(...weights) - 10;
       maxWeight = Math.max(...weights) + 10;
+      let yDomain = [];
+      const freq = (maxWeight - minWeight) / 8;
+      let startDomain = minWeight - freq;
+      
+      for(let i = 0; i < 10; i++) {
+        yDomain.push(Math.floor(startDomain));
+        startDomain += freq;
+      }
 
       renderLineChart = (
         <LineChart width={870} 
@@ -107,15 +115,14 @@ class Profile extends React.Component {
           <Line type="monotone" dataKey="weight" stroke="#000000" />
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
           <XAxis dataKey="date" />
-          <YAxis />
-          {/* <YAxis type="number" 
+          {/* <YAxis /> */}
+          <YAxis type="number" 
             domain={[minWeight - 10, maxWeight + 10]} 
-            tick={{ fill: 'white', fontSize: 12 }} 
-            ticks={[100,110,120,130,140,150,160,170,180]} 
-            dataKey="weight"
-            interval={0}
+            ticks={yDomain} 
+            // dataKey="weight"
+            // interval={0}
             // label={{ value: 'weight', angle: -90, position: 'insideLeft' }}
-            /> */}
+            />
           <Tooltip />
         </LineChart>
       );
