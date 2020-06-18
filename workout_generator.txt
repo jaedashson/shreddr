@@ -1,0 +1,26 @@
+REQUEST
+difficulty: intermediate
+equipment: [dumbbell, bench, pull-up bar]
+muscleGroups: [chest, lats]
+
+
+
+EXERCISES
+
+INCLUDE
+dumbbell bench press
+difficulty: intermediate (OK)
+equipment: [dumbbell, bench] (OK - all of the equipment is included in the request)
+muscleGroups: [chest, tricep] (OK - chest is in request. tricep is not, but this exercise should still be included)
+
+EXCLUDE
+barbell bench press
+difficulty: intermediate (OK)
+equipment: [barbell, bench, barbell rack] (BAD - request does not include barbell or barbell rack)
+muscleGroups: [chest, tricep] (OK - chest is in request. tricep was not, but this exercise should still be included)
+
+INCLUDE
+pull-up
+difficulty: intermediate (OK)
+equipment: [pull-up bar] (OK - pull-up bar is included in the request)
+muscleGroups: [lats, traps] (OK - lats is in request. traps is not, but this exercise should still be included)
