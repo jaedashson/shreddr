@@ -81,11 +81,8 @@ router.post("/generate", (req, res) => {
             Exercise.find({
                 equipment: eq
             }).then(ex => equipArr.push(ex)).then(() => res.json(equipArr));
-
         }
     })
-    
 });
 
 module.exports = router;
-
