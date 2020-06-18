@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
 
 div.signup-form-container {
-  height: 480px;
+  // height: 480px;
   width: 500px;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -106,12 +106,12 @@ div.signup-form-container {
       font-size: 16px;
       margin: 0 100px;
       height: 30px;
-      width: 306px;
+      width: 300px;
     }
   }
 
-  div.login-here {
-    margin: 4px 100px;
+  div.signup-here {
+    margin: 5px 100px 0px;
     padding-bottom: 20px;
 
     span.btn {

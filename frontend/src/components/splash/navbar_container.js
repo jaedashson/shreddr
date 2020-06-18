@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import Navbar from './navbar.jsx';
 
 const mSTP = state => ({
-  isAuthenticated: state.session.isAuthenticated
+  isAuthenticated: state.session.isAuthenticated,
+  currentUser: state.session.user
 });
 
 const mDTP = dispatch => ({

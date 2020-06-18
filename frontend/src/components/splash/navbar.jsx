@@ -7,16 +7,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navbar extends React.Component {
   render() {
-    const { openModal, isAuthenticated, logout } = this.props;
+    const { openModal, isAuthenticated, logout, currentUser } = this.props;
 
     let btn;
     if (isAuthenticated) {
       btn = (
-        <button>
-          <span className="btn-text"
-            onClick={() => logout()}
-          >Logout</span>
-        </button>
+        <>
+          <Link to={`/users/${currentUser.id}`}><FontAwesomeIcon className="nav-bar-profile-icon" icon="user-circle" /></Link>
+          <button>
+            <span className="btn-text"
+              onClick={() => logout()}
+            >Logout</span>
+          </button>
+        </>
       )
 
     } else {
@@ -39,7 +42,10 @@ class Navbar extends React.Component {
           </Link>
 
           <div className="center">
+            <Link to='/training'
+              style={{ textDecoration: 'none', color: 'black' }}>
             <span>Training</span>
+            </Link>
             <div className="border"></div>
             <span>Gym Finder</span>
             <div className="border"></div>

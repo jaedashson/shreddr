@@ -1,0 +1,138 @@
+section.training {
+  div.training-nav {
+    background-color: navy;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    
+    div {
+      margin: auto;
+      width: 900px;
+      display: flex;
+      justify-content: center;
+
+      span {
+        color: white;
+        font-family: Bebas Neue;
+        font-size: 24px;
+      }
+    }
+  }
+
+  section.main {
+    font-family: Bebas Neue;
+    background-color: rgb(240, 242, 245);
+
+    div.image {
+      margin: auto;
+      background-image: url("../images/bodyparts.png");
+      -webkit-background-size: contain;
+      -moz-background-size: contain;
+      -o-background-size: contain;
+      background-size: contain;
+      background-position: center top;
+      height: 430px;
+      width: 898px;
+      border-left: 1px solid rgb(206, 208, 212);
+      border-right: 1px solid rgb(206, 208, 212);
+      border-bottom: 1px solid rgb(206, 208, 212);
+    }
+
+    div.form-container {
+      margin-top: 20px;
+      width: 100%;
+      height: 450px; 
+
+      form.training-form {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 898px;
+        height: 428px;
+        border-left: 1px solid rgb(206, 208, 212);
+        border-right: 1px solid rgb(206, 208, 212);
+        border-bottom: 2px solid rgb(206, 208, 212);
+        // border-top: 2px solid rgb(206, 208, 212);
+        // NEEDA FIX THIS MAYBE
+        background-color: #FFFFFF;
+
+        div.options {
+          display: flex;
+
+          div.col-1, div.col-2, div.col-3 {
+            height: 90%;
+            width: 33.33%;
+            // border: 1px solid black;
+            margin: 30px;
+  
+            span {
+              display: block;
+              font-size: 22px;
+              padding: 0 0 20px 0;
+            }
+  
+            div.equipment-list {
+              display: flex;
+              flex-direction: column;
+              font-size: 20px;
+  
+              input {
+                margin: 6px 10px;
+              }
+            }
+  
+            div.muscles-list {
+              display: flex;
+              flex-direction: column;
+              font-size: 20px;
+  
+              input {
+                margin: 6px 10px;
+              }
+            }
+
+            .difficulty-radio {
+              display: flex;
+              flex-direction: column;
+              margin-top: 25px;
+
+              div {
+                font-size: 20px;
+
+                input {
+                  margin: 6px 10px;
+                }
+              }
+            }
+          }
+        }
+
+        button {
+          margin: auto;
+          width: 400px;
+        }
+      }
+    }
+
+    div.exercises {
+      min-height: 200px;
+      width: 100%;
+      
+      div.exercises-container {
+        min-height: 198px;
+        width: 898px;
+        margin: auto;
+        background-color: #FFFFFF;
+        border-left: 1px solid rgb(206, 208, 212);
+        border-right: 1px solid rgb(206, 208, 212);
+        border-bottom: 2px solid rgb(206, 208, 212);
+
+        span {
+          display: block;
+          font-size: 24px;
+          padding: 30px;
+        }
+      }
+    }
+  }
+}
