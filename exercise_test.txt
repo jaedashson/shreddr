@@ -240,3 +240,13 @@ const concentrationCurl = new Exercise({
     muscleGroups: ["bicep"],
     description: "The concentration curl is a classic exercise for building the biceps one arm at a time."
 })
+
+{
+    "name": "Bulgarian Split Squat",
+    "equipment": ["bench, dumbbell"],
+    "difficulty": "advanced",
+    "category": "free weight",
+    "muscleGroups": ["gluteus maximus, quadriceps"],
+    "description": "A popular workout that builds the glutes." 
+}
+
