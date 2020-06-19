@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
 
   loginDemo() {
     this.props.login({ email: "kanye@yzy.com", password: "hunter12" }).then(err => {
-      if (err.errors) {
+            if (err.errors) {
         this.props.openModal("login");
       } else {
         this.props.closeModal();
