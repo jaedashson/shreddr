@@ -74,10 +74,6 @@ class Profile extends React.Component {
     }
   }
 
-  updateProgressPicDate(field) {
-
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     let weight = {
@@ -92,6 +88,18 @@ class Profile extends React.Component {
 
   handleSubmitProgressPic(e) {
     e.preventDefault();
+
+    if (!this.state.progressPicFile) {
+      return;
+    }
+
+    const date = new Date(this.state.progressPicYear, this.state.progressPicMonth, this.state.progressPicDay);
+    const formData = new FormData();
+    formData.append("date", date);
+    formData.append("file", this.state.progressPicFile);
+
+    this.props.addNewProgressPic(formData, this.state.user)
+      .then(() => this.props.fetchProgressPic(this.props.match.params.userId));
   }
 
   handleSelectFile(e) {
