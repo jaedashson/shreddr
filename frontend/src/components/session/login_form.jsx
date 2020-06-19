@@ -78,11 +78,10 @@ class LoginForm extends React.Component {
               placeholder="Password"
             />
             <div className={Object.keys(this.state.errors).includes('login_password') ? "signup-errors" : "signup-errors hidden"}>Invalid password.</div>
-            <button className="demo-user" onClick={this.loginDemo}>Demo User</button>
             <button className="login" onClick={this.handleSubmit}>Login</button>
 
         </form>
-
+        <button className="demo-user" onClick={this.loginDemo}>Demo User</button>
         <div className="login-here">
           <span>Don't have an account? Sign up </span>
           <span className="btn"

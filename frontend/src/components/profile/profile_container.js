@@ -7,7 +7,6 @@ import { fetchUserProfile } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   if (state.entities.users[ownProps.match.params.userId]) {
-    // debugger
     return {
       currentUser: state.session.user,
       isAuthenticated: state.session.isAuthenticated,
@@ -25,12 +24,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  // debugger
   return {
     addNewWeight: newWeight => dispatch(addNewWeight(newWeight)),
     fetchUserWeights: userId => dispatch(fetchUserWeights(userId)),
     fetchUserProfile: userId => dispatch(fetchUserProfile(userId)),
-    addNewProgressPic: (formData, userId) => dispatch(addNewProgressPic(formData, userId)),
+    addNewProgressPic: (formData, userId) => {return dispatch(addNewProgressPic(formData, userId)) },
     fetchProgressPic: userId => dispatch(fetchProgressPic(userId))
   }
 }
