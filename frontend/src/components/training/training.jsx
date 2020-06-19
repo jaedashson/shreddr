@@ -3,6 +3,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import '../../stylesheets/training.scss';
+import { wrapGrid } from 'animate-css-grid'
 
 const EQUIPMENT = [
   "Barbell",
@@ -59,6 +60,8 @@ class Training extends React.Component {
   }
 
   componentDidMount() {
+    const grid = document.querySelector(".exercises-list");
+    wrapGrid(grid);
     this.props.fetchExercises()
       .then(() => this.setState({ exercises: this.props.exercises }));
   }
@@ -145,7 +148,7 @@ class Training extends React.Component {
         filteredEquipment = filteredDifficulty;
       } else {
         filteredDifficulty.forEach(e => {
-          if (e.equipment.every(equip => this.state.equipment[equip.charAt(0).toUpperCase() + equip.slice(1)] === true)) {
+          if (e.equipment.every(equip => this.state.equipment[equip.split(' ').map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(' ')] === true)) {
             filteredEquipment.push(e);
           }
         });
@@ -156,7 +159,7 @@ class Training extends React.Component {
         filteredMuscleGroups = filteredEquipment;
       } else {
         filteredEquipment.forEach(e => {
-          if (e.muscleGroups.some(muscle => this.state.muscleGroups[muscle.charAt(0).toUpperCase() + muscle.slice(1)] === true)) {
+          if (e.muscleGroups.some(muscle => this.state.muscleGroups[muscle.split(' ').map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(' ')] === true)) {
             filteredMuscleGroups.push(e);
           }
         });
@@ -170,10 +173,20 @@ class Training extends React.Component {
         return (
           <li key={e._id}
             className="filtered-exercise">
-            <span>Exercise: {e.name}</span>
-            <span>Difficulty: {e.difficulty}</span>
-            <span>Equipment: {equipText}</span>
-            <span>Muscle Group(s): {e.muscleGroups.join(', ')}</span>
+            <div>
+              <span>Exercise: 
+                <span>{e.name}</span>
+              </span>
+              <span>Difficulty: 
+                <span className={e.difficulty}>{e.difficulty}</span>
+              </span>
+              <span>Equipment: 
+                <span>{equipText}</span>
+              </span>
+              <span>Muscle Group(s): 
+                <span>{e.muscleGroups.join(', ')}</span>
+              </span>
+            </div>
           </li>
         )
       })
@@ -239,7 +252,7 @@ class Training extends React.Component {
 
           <div className="exercises">
             <div className="exercises-container">
-              <span>Get Pumped With These Exercises</span>
+              <span className="title">Get Pumped With These Exercises</span>
               <ul className="exercises-list">
                 {filtered}
               </ul>

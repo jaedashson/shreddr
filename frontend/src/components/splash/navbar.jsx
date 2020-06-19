@@ -4,6 +4,7 @@ import {
   Link
 } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '@material-ui/core/Button';
 
 class Navbar extends React.Component {
   render() {
@@ -20,18 +21,23 @@ class Navbar extends React.Component {
               <div className="nav-name">{firstName}</div>
             </div>
           </Link>
-          <button className="logout-btn">
+          <Button className="logout-btn">
             <span className="btn-text" onClick={() => logout()}>Logout</span>
-          </button>
+          </Button>
+          {/* <button className="logout-btn">
+            <span className="btn-text" onClick={() => logout()}>Logout</span>
+          </button> */}
+
         </>
       )
 
     } else {
       btn = (
-        <button className="login-btn">
+        <Button variant="contained"
+          className="login-btn">
           <FontAwesomeIcon icon={['far', 'user']} className="fa-user" />
           <span className="btn-text" onClick={() => openModal('signup')}>Join Now</span>
-        </button>
+        </Button>
       )
     }
 
