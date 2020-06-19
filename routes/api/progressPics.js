@@ -43,6 +43,7 @@ router.post("/:user_id", upload.single("file"), (req, res) => {
       const month = parseInt(dateArray[1]);
       const date = parseInt(dateArray[2]);
 
+      debugger
       // invalid date
       const newProgressPic = new ProgressPic({
         user: req.params.user_id,

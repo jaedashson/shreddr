@@ -217,14 +217,14 @@ section.profile {
     }
 
     div.progress-tracker-container {
-      height: 500px;
+      height: 440px;
       width: 100%;
 
       div.progress-tracker {
         height: 100%;
         margin: auto;
         width: 900px;
-              background-color: #FFFFFF;
+        background-color: #FFFFFF;
         
         div.banner {
           background-color: #A4303F;
@@ -268,5 +268,39 @@ section.profile {
       }
     }
 
+    div.progress-photos-container {
+      height: 500px;
+      width: 100%;
+
+      div.progress-photos {
+        height: 100%;
+        margin: auto;
+        width: 900px;
+        background-color: #FFFFFF;
+
+        div.banner {
+          background-color: #A4303F;
+          border-left: 1px solid #A4303F;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+
+          span {
+            color: white;
+            font-family: Bebas Neue;
+            font-size: 24px;
+            cursor: pointer;
+          }
+
+        }
+        div.actual-photos {
+          border-left: 1px solid rgb(206, 208, 212);
+          border-right: 1px solid rgb(206, 208, 212);
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
   }
 }
