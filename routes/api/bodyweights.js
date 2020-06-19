@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Bodyweight = require('../../models/Bodyweight');
 const passport = require('passport');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // // POST /api/bodyweights/users/:user_id/bodyweight
 // router.post(
@@ -33,16 +35,22 @@ router.post("/:user_id", (req, res) => {
     const year = parseInt(dateArray[0]);
     const month = parseInt(dateArray[1]) - 1;
     const date = parseInt(dateArray[2]);
+    const bodyweightDate = new Date(year, month, date);
 
-    const newBodyweight = new Bodyweight({
+    Bodyweight.deleteMany({
         user: req.params.user_id,
-        weight: req.body.weight,
-        date: new Date(year, month, date)
-    })
+        date: bodyweightDate
+    }).then(() => {
+        const newBodyweight = new Bodyweight({
+            user: req.params.user_id,
+            weight: req.body.weight,
+            date: bodyweightDate
+        });
 
-    newBodyweight.save().then(bodyweight => {
-        return res.json(bodyweight);
-    });
+        newBodyweight.save().then(bodyweight => {
+            return res.json(bodyweight);
+        });
+    })
 })
 
 // GET /api/bodyweights/:user_id
