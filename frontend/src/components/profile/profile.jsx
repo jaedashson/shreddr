@@ -378,7 +378,7 @@ class Profile extends React.Component {
               <div className="left">
                 <div className="left-left">
                   <div className="pfp">
-                    {/* user's pfp */}
+                    <img className="user-profile-pic"src={user.fileLink} alt=""/>
                   </div>
 
                   <div>

@@ -45,17 +45,20 @@ section.profile {
           margin: 10px 20px;
           height: 300px;
           width: 500px;
-          // border-right: 1px solid black;
   
           div.left-left {
             width: 200px;
             
             div.pfp {
-              // background-image: currentUser's pfp;
               height: 200px;
               margin: 20px;
               width: 160px;
-              border: 1px solid rgb(206, 208, 212);
+              object-fit: cover;
+
+              .user-profile-pic {
+                height: 200px;
+                width: 160px;
+              }
             }
     
             div {
@@ -63,7 +66,6 @@ section.profile {
               justify-content: center;
               span {
                 color: #000;
-                // font-family: Bebas Neue;
                 font-size: 20px;
               }
             }
