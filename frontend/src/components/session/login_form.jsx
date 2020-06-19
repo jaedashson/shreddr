@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginDemo = this.loginDemo.bind(this);
   }
 
   componentDidUpdate(prevProp) {
@@ -36,6 +37,16 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user).then( err => {
+      if (err.errors) {
+        this.props.openModal("login");
+      } else {
+        this.props.closeModal();
+      }
+    });
+  }
+
+  loginDemo() {
+    this.props.login({ email: "kanye@yzy.com", password: "hunter12" }).then(err => {
       if (err.errors) {
         this.props.openModal("login");
       } else {
@@ -78,6 +89,7 @@ class LoginForm extends React.Component {
             onClick={() => openModal('signup')}>here</span>
           <span>.</span>
         </div>
+        <button className="demo-user" onClick={this.loginDemo}>Demo User</button>
       </div>
     );
   }

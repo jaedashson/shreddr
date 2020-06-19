@@ -51,8 +51,10 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.fetchUserProfile(this.props.match.params.userId)
-      .then(action => this.props.fetchUserWeights(action.user.data._id));
+      .then(action => this.props.fetchUserWeights(this.props.match.params.userId))
+      .then(action => this.props.fetchProgressPic(this.props.match.params.userId));
   }
 
   update(field) {
@@ -74,10 +76,6 @@ class Profile extends React.Component {
     }
   }
 
-  updateProgressPicDate(field) {
-
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     let weight = {
@@ -92,6 +90,17 @@ class Profile extends React.Component {
 
   handleSubmitProgressPic(e) {
     e.preventDefault();
+
+    if (!this.state.progressPicFile) {
+      return;
+    }
+    const date = `${this.state.progressPicYear}-${this.state.progressPicMonth}-${this.state.progressPicDay}`
+    const formData = new FormData();
+    formData.append("date", date);
+    formData.append("file", this.state.progressPicFile);
+
+    this.props.addNewProgressPic(formData, this.state.user)
+      .then(() => this.props.fetchProgressPic(this.props.match.params.userId));
   }
 
   handleSelectFile(e) {
@@ -281,7 +290,7 @@ class Profile extends React.Component {
                     </div>
                   </div>
 
-                  <button></button>
+                  <button>Upload pic</button>
                 </form>
               </div>
             </div>
@@ -289,6 +298,8 @@ class Profile extends React.Component {
         </div>
       )
     }
+
+
 
     return (
       <section className="profile">
@@ -322,9 +333,9 @@ class Profile extends React.Component {
                 </div>
               </div>
 
-              <div className="right">
+              {/* <div className="right">
                 <span>Progress Photos</span>
-              </div>
+              </div> */}
 
               <div className="line"></div>
             </div>
@@ -339,6 +350,17 @@ class Profile extends React.Component {
               </div>
               <div className="chart-container">
                 {renderLineChart}
+              </div>
+            </div>
+          </div>
+
+          <div className="progress-photos-container">
+            <div className="progress-photos">
+              <div className="banner">
+                <span>Progress Photos</span>
+              </div>
+              <div className="actual-photos">
+
               </div>
             </div>
           </div>
