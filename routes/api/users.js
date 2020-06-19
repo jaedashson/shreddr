@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
@@ -8,6 +9,11 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateLoginInput = require('../../validations/login');
 const validateRegisterInput = require('../../validations/register');
+const multer = require("multer"); // AWS
+var AWS = require("aws-sdk"); // AWS
+
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
 //test route
 router.get("/test", (req, res) => {
@@ -119,8 +125,47 @@ router.get("/profile/:user_id", (req, res) => {
     .then(user => {
       if (!user) {
         return res.status(404).json({ email: 'This user does not exist!' })  
-      }  else {
+      } else {
         return res.json(user); // do i need to specifiy 200 code for success call?
+      }
+    })
+})
+
+router.post("/:user_id/profilePic", upload.single("file"), (req, res) => {
+  User.findOne({ _id: req.params.user_id })
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({ user: 'This user does not exist!' })
+      } else {
+        const file = req.file;
+        const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
+
+        let s3bucket = new AWS.S3({
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+          region: process.env.AWS_REGION
+        });
+
+        var params = {
+          Bucket: process.env.AWS_BUCKET_NAME,
+          Key: file.originalname,
+          Body: file.buffer,
+          ContentType: file.mimetype,
+          ACL: "public-read"
+        };
+
+        s3bucket.upload(params, (err, data) => {
+          if (err) {
+            res.status(500).json({ error: true, Message: error });
+          } else {
+            user.fileLink = s3FileURL + "/" + file.orginalname;
+            user.s3_key = params.Key;
+            user.save()
+              .then(user => res.json(user))
+              .catch(err => console.log(err));
+          }
+        })
+
       }
     })
 })

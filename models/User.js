@@ -35,6 +35,12 @@ const UserSchema = new Schema({
   },
   progressPics: {
     type: [Object]
+  },
+  fileLink: {
+    type: String
+  },
+  s3_key: {
+    type: String
   }
 });
 

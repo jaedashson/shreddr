@@ -29,7 +29,8 @@ class Profile extends React.Component {
         progressPicDay: date.getDate(),
         progressPicMonth: date.getMonth() + 1,
         progressPicYear: date.getFullYear(),
-        progressPicFile: null
+        progressPicFile: null,
+        profilePicFile: null
       } 
     } else {
       this.state = {
@@ -41,13 +42,15 @@ class Profile extends React.Component {
         progressPicDay: date.getDate(),
         progressPicMonth: date.getMonth() + 1,
         progressPicYear: date.getFullYear(),
-        progressPicFile: null
+        progressPicFile: null,
+        profilePicFile: null
       } 
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitProgressPic = this.handleSubmitProgressPic.bind(this);
     this.handleSelectFile = this.handleSelectFile.bind(this);
+    this.handleSelectProfilePic = this.handleSelectProfilePic.bind(this);
   }
 
   componentDidMount() {
@@ -105,10 +108,30 @@ class Profile extends React.Component {
       });
   }
 
+  handleSubmitProfilePic(e) {
+    e.preventDefault();
+
+    if (!this.state.profilePicFile) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", this.state.profilePicFile);
+
+    // this.props.updateProfilePic
+  }
+
   handleSelectFile(e) {
     e.preventDefault();
     this.setState({
       progressPicFile: e.currentTarget.files[0]
+    })
+  }
+
+  handleSelectProfilePic(e) {
+    e.preventDefault();
+    this.setState({
+      profilePicFile: e.currentTarget.files[0]
     })
   }
 
