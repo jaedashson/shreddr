@@ -7,7 +7,7 @@ import { fetchUserProfile } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   if (state.entities.users[ownProps.match.params.userId]) {
-    debugger
+    // debugger
     return {
       currentUser: state.session.user,
       isAuthenticated: state.session.isAuthenticated,
@@ -25,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  debugger
+  // debugger
   return {
     addNewWeight: newWeight => dispatch(addNewWeight(newWeight)),
     fetchUserWeights: userId => dispatch(fetchUserWeights(userId)),

@@ -31,7 +31,7 @@ const passport = require('passport');
 router.post("/:user_id", (req, res) => {
     const dateArray = req.body.date.split("-");
     const year = parseInt(dateArray[0]);
-    const month = parseInt(dateArray[1]);
+    const month = parseInt(dateArray[1]) - 1;
     const date = parseInt(dateArray[2]);
 
     const newBodyweight = new Bodyweight({
