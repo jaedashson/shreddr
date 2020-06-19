@@ -2,10 +2,10 @@ import React from 'react';
 import { 
   withRouter,
 } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/profile.scss';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import allmight from '../../images/allmight.jpg'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -100,7 +100,6 @@ class Profile extends React.Component {
   }
 
   handleSubmitProgressPic(e) {
-    debugger;
     e.preventDefault();
 
     if (!this.state.progressPicFile) {
@@ -112,10 +111,8 @@ class Profile extends React.Component {
     formData.append("date", date);
     formData.append("file", this.state.progressPicFile);
 
-    debugger;
     this.props.addNewProgressPic(formData, this.state.user)
       .then(() => {
-        debugger;
         this.setState({ progressPicFile: null });
         return this.props.fetchProgressPic(this.props.match.params.userId)
       });
@@ -129,7 +126,6 @@ class Profile extends React.Component {
   }
 
   render() {
-    // debugger
     const { currentUser, user, userBodyweights } = this.props;
 
     const filename = this.state.progressPicFile ? this.state.progressPicFile.name : null;
@@ -182,7 +178,11 @@ class Profile extends React.Component {
     } else if (user.bodyweights.length === 0) {
       renderLineChart = (
         <div className="nchart-error-wrapper">
-          <span className="nchart-error">wuh-woh! wooks wike you don't have any weights. pwease add a new weight to twack your pwogwess!</span>
+          <img src={allmight} className="all-might"/>
+          <span className="nchart-error-title">wuh-woh! ✿◕ ‿ ◕✿</span>
+          <span className="nchart-error"> wooks wike you don't have any weights. ●︿●</span>
+          <span className="nchart-error"> pwease add a new weight to twack your pwogwess!</span>
+          <span className="nchart-error"> ＼（○＾ω＾○）／</span>
         </div>
       )
     }

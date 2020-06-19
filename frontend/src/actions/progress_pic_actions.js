@@ -21,12 +21,9 @@ export const fetchProgressPic = userId => dispatch => (
 );
 
 export const addNewProgressPic = (formData, userId) => dispatch => {
-    debugger
     return addProgressPic(formData, userId).then(progresspic => {
-        debugger
         return dispatch(receiveProgressPic(progresspic))
     }, err => {
-        debugger
         console.log(err);
     })
 };
