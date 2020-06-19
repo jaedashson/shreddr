@@ -251,19 +251,18 @@ class Profile extends React.Component {
 
                 <span>Upload Progress Photos</span>
                 <form onSubmit={this.handleSubmitProgressPic}>
-                  <label className="upload-btn"
-                    htmlFor="file">
-                    <FontAwesomeIcon className="upload-btn-icon" 
-                      icon="upload" />
-                    <input className={this.state.uploadFile}
-                      type="file"
-                      id="file"
-                      onChange={this.handleSelectFile}
-                      accept="image/*"
-                    />
-                  </label>
-
-                  <div className="filename-container">
+                  <div className="upload-btn-wrapper">
+                    <label className="upload-btn"
+                      htmlFor="file">
+                      <FontAwesomeIcon className="upload-btn-icon" 
+                        icon="upload" />
+                      <input className={this.state.uploadFile}
+                        type="file"
+                        id="file"
+                        onChange={this.handleSelectFile}
+                        accept="image/*"
+                      />
+                    </label>
                     <p className="filename">{filename}</p>
                   </div>
 
@@ -309,13 +308,20 @@ class Profile extends React.Component {
 
     let progressPics;
     if (user && user.progressPics.length > 0) {
-      progressPics = user.progressPics.reverse().map(pic => (
-        <li key={pic._id}>
-          <img src={pic.fileLink} 
-            alt=""
-            className="each-pic"/>
-        </li>
-      ))
+      progressPics = user.progressPics.map(pic => {
+        let date = new Date(pic.date);
+        let m = date.getMonth();
+        let d = date.getDate();
+        let y = date.getFullYear();
+        return (
+          <li key={pic._id}>
+            <img src={pic.fileLink} 
+              alt=""
+              className="each-pic"/>
+              <span>{`${m}/${d}/${y}`}</span>
+          </li>
+        )
+      })
     }
 
     return (
