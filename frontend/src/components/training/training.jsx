@@ -16,8 +16,10 @@ const EQUIPMENT = [
   "Heavy Ropes",
   "Kettlebells",
   "Lat Pulldown Machine",
+  "Medicine Ball",
   "Olympic Squat Rack",
   "Pullup Bar",
+  "Resistance Bands",
   "Tricep Pushdown Machine",
   "Weight Belt"
 ];
