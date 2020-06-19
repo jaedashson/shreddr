@@ -44,18 +44,25 @@ section.profile {
           display: flex;
           margin: 10px 20px;
           height: 300px;
-          width: 500px;
-          // border-right: 1px solid black;
+          width: 100%; // or 500px?
   
           div.left-left {
             width: 200px;
             
             div.pfp {
-              // background-image: currentUser's pfp;
+              // border: 1px solid black;
+              // border-radius: 6px;
               height: 200px;
               margin: 20px;
               width: 160px;
-              border: 1px solid rgb(206, 208, 212);
+              object-fit: cover;
+
+              .user-profile-pic {
+                border: 2px solid rgb(206, 208, 212);
+                border-radius: 4px;
+                height: 200px;
+                width: 160px;
+              }
             }
     
             div {
@@ -63,14 +70,63 @@ section.profile {
               justify-content: center;
               span {
                 color: #000;
-                // font-family: Bebas Neue;
+                font-size: 20px;
+              }
+            }
+          }
+
+          div.upload-pfp-container {
+            display: flex;
+            align-items: center;
+            width: 228px;
+
+            form.pfp-upload {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              width: 200px;
+              height: 80px;
+
+              div.pfp-btn-wrapper {
+
+                label.upload-btn:hover {
+                  cursor: pointer;
+                }
+  
+                label.pfp-btn {
+                  display: block;
+                  background-color: #efefef;
+                  border: 1px solid rgb(206, 208, 212);
+                  border-radius: 8px;
+                  margin: 10px;
+                  height: 40px;
+                  width: 40px;
+    
+                  .pfp-btn-icon {
+                    font-size: 24px;
+                    position: relative;
+                    top: 8px;
+                    left: 8px;
+                  }
+    
+                  input#pfp-file {
+                    display: none;
+                  }
+                }
+
+              }
+
+              .pfpname {
+                margin: 0;
+                padding: 0 0 4px 0;
                 font-size: 20px;
               }
             }
           }
 
           div.left-right {
-            height: 300px;
+            border-left: 1px solid rgb(206, 208, 212);
+            height: 280px;
             width: 350px;
 
             div {
@@ -82,21 +138,6 @@ section.profile {
                 display: block;
               }
             }
-          }
-  
-        }
-  
-        div.right {
-          display: flex;
-          justify-content: center;
-          border-left: 1px solid rgb(206, 208, 212);
-          height: 260px;
-          width: 400px;
-          margin: 20px;
-
-          span {
-            display: block;
-            font-size: 24px;
           }
         }
       }
@@ -225,8 +266,8 @@ section.profile {
                 }
 
                 .filename {
-                  margin: 0px;
-                  padding: 0px;
+                  margin: 0;
+                  padding: 0;
                   font-size: 20px;
                 }
               }
