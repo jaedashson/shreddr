@@ -83,23 +83,39 @@ class Profile extends React.Component {
       date: this.state.date,
     };
 
+    let day, month, year;
+    let date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+
     this.props.addNewWeight(weight)
-      .then(() => this.props.fetchUserWeights(this.props.match.params.userId));
+      .then(() => {
+        this.setState({
+          weight: '',
+          date: `${year}-${month}-${day}`
+        })
+        return this.props.fetchUserWeights(this.props.match.params.userId)
+      });
   }
 
   handleSubmitProgressPic(e) {
+    debugger;
     e.preventDefault();
 
     if (!this.state.progressPicFile) {
       return;
     }
+
     const date = `${this.state.progressPicYear}-${this.state.progressPicMonth}-${this.state.progressPicDay}`
     const formData = new FormData();
     formData.append("date", date);
     formData.append("file", this.state.progressPicFile);
 
+    debugger;
     this.props.addNewProgressPic(formData, this.state.user)
       .then(() => {
+        debugger;
         this.setState({ progressPicFile: null });
         return this.props.fetchProgressPic(this.props.match.params.userId)
       });
@@ -131,6 +147,7 @@ class Profile extends React.Component {
         let m = date.getMonth() + 1;
         let d = date.getDate();
         let y = date.getFullYear();
+        y = y.toString().slice(2);
         data.push({date: `${m}/${d}/${y}`, weight: w.weight});
         weights.push(w.weight);
       }
@@ -169,7 +186,6 @@ class Profile extends React.Component {
         </div>
       )
     }
-
 
     let addWeightPhotos;
     if (currentUser && currentUser.id === this.props.match.params.userId) {
@@ -251,19 +267,18 @@ class Profile extends React.Component {
 
                 <span>Upload Progress Photos</span>
                 <form onSubmit={this.handleSubmitProgressPic}>
-                  <label className="upload-btn"
-                    htmlFor="file">
-                    <FontAwesomeIcon className="upload-btn-icon" 
-                      icon="upload" />
-                    <input className={this.state.uploadFile}
-                      type="file"
-                      id="file"
-                      onChange={this.handleSelectFile}
-                      accept="image/*"
-                    />
-                  </label>
-
-                  <div className="filename-container">
+                  <div className="upload-btn-wrapper">
+                    <label className="upload-btn"
+                      htmlFor="file">
+                      <FontAwesomeIcon className="upload-btn-icon" 
+                        icon="upload" />
+                      <input className={this.state.uploadFile}
+                        type="file"
+                        id="file"
+                        onChange={this.handleSelectFile}
+                        accept="image/*"
+                      />
+                    </label>
                     <p className="filename">{filename}</p>
                   </div>
 
@@ -309,13 +324,21 @@ class Profile extends React.Component {
 
     let progressPics;
     if (user && user.progressPics.length > 0) {
-      progressPics = user.progressPics.reverse().map(pic => (
-        <li key={pic._id}>
-          <img src={pic.fileLink} 
-            alt=""
-            className="each-pic"/>
-        </li>
-      ))
+      progressPics = user.progressPics.map(pic => {
+        let date = new Date(pic.date);
+        let m = date.getMonth();
+        let d = date.getDate();
+        let y = date.getFullYear();
+        y = y.toString().slice(2);
+        return (
+          <li key={pic._id}>
+            <img src={pic.fileLink} 
+              alt=""
+              className="each-pic"/>
+              <span>{`${m}/${d}/${y}`}</span>
+          </li>
+        )
+      })
     }
 
     return (

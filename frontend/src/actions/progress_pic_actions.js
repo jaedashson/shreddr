@@ -3,8 +3,9 @@ import { addProgressPic, getProgressPic } from "../util/progress_pic_api_util";
 export const RECEIVE_PROGRESS_PICS = "RECEIVE_PROGRESS_PICS";
 export const RECEIVE_PROGRESS_PIC = "RECEIVE_PROGRESS_PIC";
 
-export const receiveProgressPics = progresspics => ({
+export const receiveProgressPics = (progresspics, userId) => ({
     type: RECEIVE_PROGRESS_PICS,
+    userId,
     progresspics
 })
 
@@ -15,12 +16,17 @@ export const receiveProgressPic = progresspic => ({
 
 export const fetchProgressPic = userId => dispatch => (
     getProgressPic(userId)
-    .then( progresspics => dispatch(receiveProgressPics(progresspics)))
+    .then(progresspics => dispatch(receiveProgressPics(progresspics, userId)))
     .catch( err => console.log(err))
 );
 
-export const addNewProgressPic = (formData, userId) => dispatch => (
-    addProgressPic(formData, userId)
-    .then( progresspic => dispatch(receiveProgressPic(progresspic)))
-    .catch((err) => console.log(err))
-);
+export const addNewProgressPic = (formData, userId) => dispatch => {
+    debugger
+    return addProgressPic(formData, userId).then(progresspic => {
+        debugger
+        return dispatch(receiveProgressPic(progresspic))
+    }, err => {
+        debugger
+        console.log(err);
+    })
+};

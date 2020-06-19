@@ -8,9 +8,11 @@ const usersReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PROGRESS_PICS: 
-      newState[action.progresspics.data[0].user].progressPics = action.progresspics.data;
+    debugger;
+      newState[action.userId].progressPics = action.progresspics.data;
       return newState;
     case RECEIVE_PROGRESS_PIC:
+      debugger;
       newState[action.progresspic.data.user].progressPics.push(action.progresspic.data);
       return newState;
     case RECEIVE_WEIGHTS:
