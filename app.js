@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require('path');
 const express = require("express");
 const app = express();
@@ -9,6 +10,10 @@ const bodyParser = require("body-parser");
 const exercises = require('./routes/api/exercises');
 const workouts = require('./routes/api/workouts');
 const bodyweights = require('./routes/api/bodyweights');
+const progressPics = require('./routes/api/progressPics');
+const cors = require("cors");
+
+app.use(cors());
 
 // passport?
 
@@ -38,6 +43,7 @@ app.use("/api/users", users);
 app.use("/api/exercises", exercises);
 app.use("/api/workouts", workouts);
 app.use("/api/bodyweights", bodyweights);
+app.use("/api/progressPics", progressPics);
 
 const port = process.env.PORT || 5000;
 

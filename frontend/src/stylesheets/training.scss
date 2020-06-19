@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
 section.training {
   div.training-nav {
     background-color: navy;
@@ -127,10 +129,58 @@ section.training {
         border-right: 1px solid rgb(206, 208, 212);
         border-bottom: 2px solid rgb(206, 208, 212);
 
-        span {
+        span.title {
           display: block;
           font-size: 24px;
           padding: 30px;
+        }
+
+        ul.exercises-list {
+          display: grid;
+          grid-template-columns: 400px 400px;
+          grid-gap: 20px 20px;
+
+          li.filtered-exercise {
+            border: 3px ridge #b9b9ba;
+            border-radius: 10px;
+            height: 100px;
+            list-style: none;
+            padding: 20px;
+            width: 350px;
+
+            span {
+              border-bottom: 1px solid #f2eeec;
+              display: block;
+              font-size: 18px;
+              font-family: Roboto Condensed;
+              line-height: 1.2;
+
+              span {
+                border: none;
+                display: inline-block;
+                font-family: Bebas Neue;
+                font-size: 20px;
+                padding: 0 0 0 10px;
+              }
+
+              span.beginner {
+                color: green;
+              }
+
+              span.intermediate {
+                color: rgb(255, 165, 0);
+              }
+
+              span.advanced {
+                color: red;
+              }
+            }
+
+            span:last-child {
+              border: none;
+            }
+
+          }
         }
       }
     }
