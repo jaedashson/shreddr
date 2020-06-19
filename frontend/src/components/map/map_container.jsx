@@ -42,7 +42,6 @@ class eMapContainer extends React.Component {
   } 
 
   toggleMapOpen = (props, marker) => {
-    // debugger
     this.setState({ isOpen: true, activeMarker: marker, selectedPlace: props});
   }
 

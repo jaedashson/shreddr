@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
       isAuthenticated: state.session.isAuthenticated,
       user: state.entities.users[ownProps.match.params.userId],
       userBodyweights: state.entities.users[ownProps.match.params.userId].bodyweights,
+      userProgressPics: state.entities.users[ownProps.match.params.userId].progressPics
     }
   } else {
     return {
@@ -22,12 +23,14 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  addNewWeight: newWeight => dispatch(addNewWeight(newWeight)),
-  fetchUserWeights: userId => dispatch(fetchUserWeights(userId)),
-  fetchUserProfile: userId => dispatch(fetchUserProfile(userId)),
-  addNewProgressPic: (formData, userId) => dispatch(addNewProgressPic(formData, userId)),
-  fetchProgressPic: userId => dispatch(fetchProgressPic(userId))
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    addNewWeight: newWeight => dispatch(addNewWeight(newWeight)),
+    fetchUserWeights: userId => dispatch(fetchUserWeights(userId)),
+    fetchUserProfile: userId => dispatch(fetchUserProfile(userId)),
+    addNewProgressPic: (formData, userId) => {return dispatch(addNewProgressPic(formData, userId)) },
+    fetchProgressPic: userId => dispatch(fetchProgressPic(userId))
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -24,10 +24,6 @@ class Navbar extends React.Component {
           <Button className="logout-btn">
             <span className="btn-text" onClick={() => logout()}>Logout</span>
           </Button>
-          {/* <button className="logout-btn">
-            <span className="btn-text" onClick={() => logout()}>Logout</span>
-          </button> */}
-
         </>
       )
 

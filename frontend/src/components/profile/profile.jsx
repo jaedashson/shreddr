@@ -2,10 +2,10 @@ import React from 'react';
 import { 
   withRouter,
 } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../stylesheets/profile.scss';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import allmight from '../../images/allmight.jpg'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -51,7 +51,6 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchUserProfile(this.props.match.params.userId)
       .then(action => this.props.fetchUserWeights(this.props.match.params.userId))
       .then(action => this.props.fetchProgressPic(this.props.match.params.userId));
@@ -84,8 +83,20 @@ class Profile extends React.Component {
       date: this.state.date,
     };
 
+    let day, month, year;
+    let date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+
     this.props.addNewWeight(weight)
-      .then(() => this.props.fetchUserWeights(this.props.match.params.userId));
+      .then(() => {
+        this.setState({
+          weight: '',
+          date: `${year}-${month}-${day}`
+        })
+        return this.props.fetchUserWeights(this.props.match.params.userId)
+      });
   }
 
   handleSubmitProgressPic(e) {
@@ -94,13 +105,17 @@ class Profile extends React.Component {
     if (!this.state.progressPicFile) {
       return;
     }
+
     const date = `${this.state.progressPicYear}-${this.state.progressPicMonth}-${this.state.progressPicDay}`
     const formData = new FormData();
     formData.append("date", date);
     formData.append("file", this.state.progressPicFile);
 
     this.props.addNewProgressPic(formData, this.state.user)
-      .then(() => this.props.fetchProgressPic(this.props.match.params.userId));
+      .then(() => {
+        this.setState({ progressPicFile: null });
+        return this.props.fetchProgressPic(this.props.match.params.userId)
+      });
   }
 
   handleSelectFile(e) {
@@ -112,6 +127,8 @@ class Profile extends React.Component {
 
   render() {
     const { currentUser, user, userBodyweights } = this.props;
+
+    const filename = this.state.progressPicFile ? this.state.progressPicFile.name : null;
 
     if (!user) {
       return null;
@@ -126,6 +143,7 @@ class Profile extends React.Component {
         let m = date.getMonth() + 1;
         let d = date.getDate();
         let y = date.getFullYear();
+        y = y.toString().slice(2);
         data.push({date: `${m}/${d}/${y}`, weight: w.weight});
         weights.push(w.weight);
       }
@@ -160,11 +178,14 @@ class Profile extends React.Component {
     } else if (user.bodyweights.length === 0) {
       renderLineChart = (
         <div className="nchart-error-wrapper">
-          <span className="nchart-error">wuh-woh! wooks wike you don't have any weights. pwease add a new weight to twack your pwogwess!</span>
+          <img src={allmight} className="all-might"/>
+          <span className="nchart-error-title">wuh-woh! ✿◕ ‿ ◕✿</span>
+          <span className="nchart-error"> wooks wike you don't have any weights. ●︿●</span>
+          <span className="nchart-error"> pwease add a new weight to twack your pwogwess!</span>
+          <span className="nchart-error"> ＼（○＾ω＾○）／</span>
         </div>
       )
     }
-
 
     let addWeightPhotos;
     if (currentUser && currentUser.id === this.props.match.params.userId) {
@@ -246,18 +267,20 @@ class Profile extends React.Component {
 
                 <span>Upload Progress Photos</span>
                 <form onSubmit={this.handleSubmitProgressPic}>
-                  <label className="upload-btn"
-                    // onClick={this.handleUploadClick}
-                    >
-                    <FontAwesomeIcon className="upload-btn" 
-                      icon="upload" />
-                    <input className={this.state.uploadFile}
-                      type="file"
-                      id="file"
-                      onChange={this.handleSelectFile}
-                      accept="image/*"
-                    />
-                  </label>
+                  <div className="upload-btn-wrapper">
+                    <label className="upload-btn"
+                      htmlFor="file">
+                      <FontAwesomeIcon className="upload-btn-icon" 
+                        icon="upload" />
+                      <input className={this.state.uploadFile}
+                        type="file"
+                        id="file"
+                        onChange={this.handleSelectFile}
+                        accept="image/*"
+                      />
+                    </label>
+                    <p className="filename">{filename}</p>
+                  </div>
 
                   <div className="weight-date">
                     <span className="weight-text">Date: </span>
@@ -290,7 +313,7 @@ class Profile extends React.Component {
                     </div>
                   </div>
 
-                  <button>Upload pic</button>
+                  <button className="upload-pic-btn">Upload pic</button>
                 </form>
               </div>
             </div>
@@ -299,7 +322,24 @@ class Profile extends React.Component {
       )
     }
 
-
+    let progressPics;
+    if (user && user.progressPics.length > 0) {
+      progressPics = user.progressPics.map(pic => {
+        let date = new Date(pic.date);
+        let m = date.getMonth();
+        let d = date.getDate();
+        let y = date.getFullYear();
+        y = y.toString().slice(2);
+        return (
+          <li key={pic._id}>
+            <img src={pic.fileLink} 
+              alt=""
+              className="each-pic"/>
+              <span>{`${m}/${d}/${y}`}</span>
+          </li>
+        )
+      })
+    }
 
     return (
       <section className="profile">
@@ -359,8 +399,11 @@ class Profile extends React.Component {
               <div className="banner">
                 <span>Progress Photos</span>
               </div>
-              <div className="actual-photos">
 
+              <div className="actual-photos-container">
+                <ul className="actual-photos">
+                  {progressPics}
+                </ul>
               </div>
             </div>
           </div>
