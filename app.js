@@ -11,7 +11,9 @@ const exercises = require('./routes/api/exercises');
 const workouts = require('./routes/api/workouts');
 const bodyweights = require('./routes/api/bodyweights');
 const progressPics = require('./routes/api/progressPics');
-// const cors = require("cors");
+const cors = require("cors");
+
+app.use(cors());
 
 // passport?
 

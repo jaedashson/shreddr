@@ -15,6 +15,7 @@ class Profile extends React.Component {
     this.day = date.getDate();
     this.month = date.getMonth() + 1;
     this.year = date.getFullYear();
+
     
     const { currentUser, user, userBodyweights } = props;
     
@@ -24,7 +25,11 @@ class Profile extends React.Component {
         user: currentUser.id,
         weight: '',
         date: `${this.year}-${this.month}-${this.day}`,
-        uploadFile: "upload-input"
+        uploadFile: "upload-input",
+        progressPicDay: date.getDate(),
+        progressPicMonth: date.getMonth() + 1,
+        progressPicYear: date.getFullYear(),
+        progressPicFile: null
       } 
     } else {
       this.state = {
@@ -32,11 +37,17 @@ class Profile extends React.Component {
         user: currentUser.id,
         weight: '',
         date: `${this.year}-${this.month}-${this.day}`,
-        uploadFile: "upload-input"
+        uploadFile: "upload-input",
+        progressPicDay: date.getDate(),
+        progressPicMonth: date.getMonth() + 1,
+        progressPicYear: date.getFullYear(),
+        progressPicFile: null
       } 
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitProgressPic = this.handleSubmitProgressPic.bind(this);
+    this.handleSelectFile = this.handleSelectFile.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +74,10 @@ class Profile extends React.Component {
     }
   }
 
+  updateProgressPicDate(field) {
+
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let weight = {
@@ -73,6 +88,17 @@ class Profile extends React.Component {
 
     this.props.addNewWeight(weight)
       .then(() => this.props.fetchUserWeights(this.props.match.params.userId));
+  }
+
+  handleSubmitProgressPic(e) {
+    e.preventDefault();
+  }
+
+  handleSelectFile(e) {
+    e.preventDefault();
+    this.setState({
+      progressPicFile: e.currentTarget.files[0]
+    })
   }
 
   render() {
@@ -210,17 +236,53 @@ class Profile extends React.Component {
               <div className="upload-photos">
 
                 <span>Upload Progress Photos</span>
-                <label className="upload-btn"
-                  // onClick={this.handleUploadClick}
-                  >
-                  <FontAwesomeIcon className="upload-btn" 
-                    icon="upload" />
-                  <input className={this.state.uploadFile}
-                    type="file"
-                    id="file"
-                    onChange={this.handleUploadPic}
-                  />
-                </label>
+                <form onSubmit={this.handleSubmitProgressPic}>
+                  <label className="upload-btn"
+                    // onClick={this.handleUploadClick}
+                    >
+                    <FontAwesomeIcon className="upload-btn" 
+                      icon="upload" />
+                    <input className={this.state.uploadFile}
+                      type="file"
+                      id="file"
+                      onChange={this.handleSelectFile}
+                      accept="image/*"
+                    />
+                  </label>
+
+                  <div className="weight-date">
+                    <span className="weight-text">Date: </span>
+                    <div className="weight-r2">
+                      <select
+                        className="weight-month"
+                        onChange={this.updateYear("month")}
+                        value={this.state.date.split('-')[1]}
+                      >
+                        {weightMonths}
+                      </select>
+
+                      <select
+                        name={this.state.progressPicDay}
+                        className="weight-day"
+                        onChange={this.updateYear("day")}
+                        value={this.state.date.split('-')[2]}
+                      >
+                        {weightDays}
+                      </select>
+
+                      <select
+                        name={this.state.year}
+                        className="weight-year"
+                        onChange={this.updateYear("year")}
+                        value={this.state.date.split('-')[0]}
+                      >
+                        {weightYears}
+                      </select>
+                    </div>
+                  </div>
+
+                  <button></button>
+                </form>
               </div>
             </div>
           </div>
