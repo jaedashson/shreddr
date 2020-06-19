@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import { closeModal, openModal } from '../../actions/modal_actions'
 import Profile from './profile.jsx';
 import { addNewWeight, fetchUserWeights } from '../../actions/bodyweight_actions';
 import { addNewProgressPic, fetchProgressPic } from '../../actions/progress_pic_actions';

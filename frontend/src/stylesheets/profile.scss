@@ -44,17 +44,25 @@ section.profile {
           display: flex;
           margin: 10px 20px;
           height: 300px;
-          width: 100%;
+          width: 100%; // or 500px?
   
           div.left-left {
             width: 200px;
             
             div.pfp {
-              // background-image: currentUser's pfp;
+              // border: 1px solid black;
+              // border-radius: 6px;
               height: 200px;
               margin: 20px;
               width: 160px;
-              border: 1px solid rgb(206, 208, 212);
+              object-fit: cover;
+
+              .user-profile-pic {
+                border: 2px solid rgb(206, 208, 212);
+                border-radius: 4px;
+                height: 200px;
+                width: 160px;
+              }
             }
     
             div {
@@ -62,7 +70,6 @@ section.profile {
               justify-content: center;
               span {
                 color: #000;
-                // font-family: Bebas Neue;
                 font-size: 20px;
               }
             }
@@ -107,11 +114,12 @@ section.profile {
                   }
                 }
 
-                .filename {
-                  margin: 0px;
-                  padding: 0px;
-                  font-size: 20px;
-                }
+              }
+
+              .pfpname {
+                margin: 0;
+                padding: 0 0 4px 0;
+                font-size: 20px;
               }
             }
           }
@@ -131,7 +139,6 @@ section.profile {
               }
             }
           }
-  
         }
       }
     }
@@ -259,8 +266,8 @@ section.profile {
                 }
 
                 .filename {
-                  margin: 0px;
-                  padding: 0px;
+                  margin: 0;
+                  padding: 0;
                   font-size: 20px;
                 }
               }

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  withRouter,
-  // Link
-} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import '../../stylesheets/gym_finder.scss';
 import Map from '../map/map_container';
 

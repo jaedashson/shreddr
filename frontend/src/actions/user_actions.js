@@ -21,8 +21,9 @@ export const fetchUserProfile = userId => dispatch => (
 );
 
 export const updateProfilePic = (formData, userId) => dispatch => {
-  return addProfilePic(formData, userId).then(user => {
-    return dispatch(fetchUserProfile(user._id))
+  return addProfilePic(formData, userId).then(res => {
+    // debugger
+    return dispatch(fetchUserProfile(res.data._id))
   }, err => {
     console.log(err);
   })
