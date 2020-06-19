@@ -16,7 +16,7 @@ router.get("/test", (req, res) => {
 
 // POST /api/progressPics/:user_id
 router.post("/:user_id", upload.single("file"), (req, res) => {
-  debugger
+  // debugger
   const file = req.file;
   const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
 
@@ -43,7 +43,7 @@ router.post("/:user_id", upload.single("file"), (req, res) => {
       const month = parseInt(dateArray[1]);
       const date = parseInt(dateArray[2]);
 
-      debugger
+      // debugger
       // invalid date
       const newProgressPic = new ProgressPic({
         user: req.params.user_id,
