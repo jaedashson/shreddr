@@ -13,9 +13,13 @@ const EQUIPMENT = [
   "Chair",
   "Dip Handle Bars",
   "Dumbbell",
+  "Heavy Ropes",
+  "Kettlebells",
   "Lat Pulldown Machine",
+  "Medicine Ball",
   "Olympic Squat Rack",
   "Pullup Bar",
+  "Resistance Bands",
   "Tricep Pushdown Machine",
   "Weight Belt"
 ];
@@ -26,6 +30,7 @@ const MUSCLEGROUPS = [
   "Bicep",
   "Calves",
   "Chest",
+  "Full Body",
   "Gluteus Maximus",
   "Hamstring",
   "Latissimus Dorsi",
