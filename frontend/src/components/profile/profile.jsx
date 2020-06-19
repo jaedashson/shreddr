@@ -113,7 +113,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger
     const { currentUser, user, userBodyweights } = this.props;
 
     const filename = this.state.progressPicFile ? this.state.progressPicFile.name : null;
