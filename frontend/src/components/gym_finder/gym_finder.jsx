@@ -4,6 +4,7 @@ import {
   // Link
 } from 'react-router-dom';
 import '../../stylesheets/gym_finder.scss';
+import Map from '../map/map_container';
 
 class GymFinder extends React.Component {
   constructor(props) {
@@ -35,13 +36,16 @@ class GymFinder extends React.Component {
         <section className="main">
           <div className="container">
             <div className="inner-main">
-              <span>Find your nearest gym or park to start training</span>
+              <span className="gym-finder-msg">Find your nearest gym or park to start training</span>
               <form onSubmit={this.handleSubmit}>
                 <input type="text" 
                   placeholder="Please type your address or zipcode and press enter"
                   className="google"
                   onChange={this.update('google')}/>
               </form>
+              <div className="map-wrapper">
+                <Map />
+              </div>
             </div>
           </div>
         </section>
