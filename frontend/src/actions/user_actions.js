@@ -8,11 +8,11 @@ export const receiveUser = user => ({
   user
 });
 
-export const receiveProfilePic = (profilePic, userId) => ({
-  type: RECEIVE_PROFILE_PIC,
-  userId,
-  profilePic
-})
+// export const receiveProfilePic = (profilePic, userId) => ({
+//   type: RECEIVE_PROFILE_PIC,
+//   userId,
+//   profilePic
+// })
 
 export const fetchUserProfile = userId => dispatch => (
   fetchUser(userId)

@@ -1,4 +1,4 @@
-import { RECEIVE_USER, RECEIVE_PROFILE_PIC } from '../actions/user_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_WEIGHT, RECEIVE_WEIGHTS } from '../actions/bodyweight_actions';
 import { RECEIVE_PROGRESS_PIC, RECEIVE_PROGRESS_PICS } from "../actions/progress_pic_actions";
 
@@ -7,9 +7,6 @@ const usersReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
 
   switch (action.type) {
-    case RECEIVE_PROFILE_PIC: 
-      newState[action.userId].fileLink = action.profilePic.data;
-      return newState;
     case RECEIVE_PROGRESS_PICS: 
       newState[action.userId].progressPics = action.progresspics.data;
       return newState;

@@ -131,7 +131,7 @@ class Profile extends React.Component {
     const formData = new FormData();
     formData.append("file", this.state.profilePicFile);
 
-    // this.props.updateProfilePic
+    this.props.updateProfilePic(formData, this.props.match.params.userId)
   }
 
   handleSelectFile(e) {
@@ -152,6 +152,7 @@ class Profile extends React.Component {
     const { currentUser, user, userBodyweights } = this.props;
 
     const filename = this.state.progressPicFile ? this.state.progressPicFile.name : null;
+    const profilePicFilename = this.state.profilePicFile ? this.state.profilePicFile.name : null;
 
     if (!user) {
       return null;
@@ -385,6 +386,27 @@ class Profile extends React.Component {
                     <span className="name">{user ? user.fName : ''}</span>
                   </div>
                 </div>
+                
+                <div className="upload-pfp-container"> 
+                  <form className="pfp-upload" onSubmit={this.handleSubmitProfilePic}>
+                    <div className="pfp-btn-wrapper">
+                      <label className="pfp-btn"
+                        htmlFor="pfp-file">
+                        <FontAwesomeIcon className="pfp-btn-icon"
+                          icon="upload" />
+                        <input className="pfp-input"
+                          type="file"
+                          id="pfp-file"
+                          onChange={this.handleSelectProfilePic}
+                          accept="image/*"
+                        />
+                      </label>
+                      <p className="filename">{profilePicFilename}</p>
+                    </div>
+
+                    <button className="upload-pic-btn">Update profile pic</button>
+                  </form>
+                </div>
 
                 <div className="left-right">
                   <div>
@@ -395,10 +417,6 @@ class Profile extends React.Component {
                   </div>
                 </div>
               </div>
-
-              {/* <div className="right">
-                <span>Progress Photos</span>
-              </div> */}
 
               <div className="line"></div>
             </div>
