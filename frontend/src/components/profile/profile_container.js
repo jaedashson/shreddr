@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
       isAuthenticated: state.session.isAuthenticated,
       user: state.entities.users[ownProps.match.params.userId],
       userBodyweights: state.entities.users[ownProps.match.params.userId].bodyweights,
+      userProgressPics: state.entities.users[ownProps.match.params.userId].progressPics
     }
   } else {
     return {
