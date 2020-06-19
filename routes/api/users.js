@@ -136,7 +136,7 @@ router.post("/:user_id/profilePic", upload.single("file"), (req, res) => {
       if (!user) {
         return res.status(404).json({ user: 'This user does not exist!' })
       } else {
-        debugger
+        // debugger
         const file = req.file;
         const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
 
@@ -160,7 +160,7 @@ router.post("/:user_id/profilePic", upload.single("file"), (req, res) => {
           } else {
             user.fileLink = s3FileURL + "/" + file.originalname;
             user.s3_key = params.Key;
-            debugger
+            // debugger
             user.save()
               .then(user => res.json(user))
               .catch(err => console.log(err));

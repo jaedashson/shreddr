@@ -13,7 +13,7 @@ class Profile extends React.Component {
 
     let date = new Date();
     this.day = date.getDate();
-    this.month = date.getMonth() + 1;
+    this.month = date.getMonth() ;
     this.year = date.getFullYear();
 
     
@@ -49,6 +49,7 @@ class Profile extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitProgressPic = this.handleSubmitProgressPic.bind(this);
+    this.handleSubmitProfilePic = this.handleSubmitProfilePic.bind(this);
     this.handleSelectFile = this.handleSelectFile.bind(this);
     this.handleSelectProfilePic = this.handleSelectProfilePic.bind(this);
   }
@@ -65,7 +66,7 @@ class Profile extends React.Component {
     });
   }
 
-  updateYear(field) {
+  updateDate(field) {
     return e => {
       if (field === 'month') {
         this.month = e.target.value;
@@ -89,7 +90,7 @@ class Profile extends React.Component {
     let day, month, year;
     let date = new Date();
     day = date.getDate();
-    month = date.getMonth() + 1;
+    month = date.getMonth();
     year = date.getFullYear();
 
     this.props.addNewWeight(weight)
@@ -131,7 +132,12 @@ class Profile extends React.Component {
     const formData = new FormData();
     formData.append("file", this.state.profilePicFile);
 
-    // this.props.updateProfilePic
+    this.props.updateProfilePic(formData, this.props.match.params.userId)
+      .then(() => {
+        this.setState({ profilePicFile: null });
+      })
+      .then(action => this.props.fetchUserWeights(this.props.match.params.userId))
+      .then(action => this.props.fetchProgressPic(this.props.match.params.userId));
   }
 
   handleSelectFile(e) {
@@ -152,6 +158,7 @@ class Profile extends React.Component {
     const { currentUser, user, userBodyweights } = this.props;
 
     const filename = this.state.progressPicFile ? this.state.progressPicFile.name : null;
+    const profilePicFilename = this.state.profilePicFile ? this.state.profilePicFile.name : null;
 
     if (!user) {
       return null;
@@ -212,17 +219,17 @@ class Profile extends React.Component {
 
     let addWeightPhotos;
     if (currentUser && currentUser.id === this.props.match.params.userId) {
-      const years = ['Year']
+      const years = []
       for (let i = 2020; i >= 2010; i--) {
         years.push(i);
       }
 
-      const days = ['Day']
+      const days = []
       for (let i = 1; i <= 31; i++) {
         days.push(i);
       }
 
-      const months = ["Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
       const weightYears = years.map(year => {
         return <option key={year} value={year}>{year}</option>
@@ -255,7 +262,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.month}
                         className="weight-month"
-                        onChange={this.updateYear("month")}
+                        onChange={this.updateDate("month")}
                         value={this.state.date.split('-')[1]}
                       >
                         {weightMonths}
@@ -264,7 +271,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.day}
                         className="weight-day"
-                        onChange={this.updateYear("day")}
+                        onChange={this.updateDate("day")}
                         value={this.state.date.split('-')[2]}
                       >
                         {weightDays}
@@ -273,7 +280,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.year}
                         className="weight-year"
-                        onChange={this.updateYear("year")}
+                        onChange={this.updateDate("year")}
                         value={this.state.date.split('-')[0]}
                       >
                         {weightYears}
@@ -310,7 +317,7 @@ class Profile extends React.Component {
                     <div className="weight-r2">
                       <select
                         className="weight-month"
-                        onChange={this.updateYear("month")}
+                        onChange={this.updateDate("month")}
                         value={this.state.date.split('-')[1]}
                       >
                         {weightMonths}
@@ -319,7 +326,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.progressPicDay}
                         className="weight-day"
-                        onChange={this.updateYear("day")}
+                        onChange={this.updateDate("day")}
                         value={this.state.date.split('-')[2]}
                       >
                         {weightDays}
@@ -328,7 +335,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.year}
                         className="weight-year"
-                        onChange={this.updateYear("year")}
+                        onChange={this.updateDate("year")}
                         value={this.state.date.split('-')[0]}
                       >
                         {weightYears}
@@ -378,12 +385,35 @@ class Profile extends React.Component {
               <div className="left">
                 <div className="left-left">
                   <div className="pfp">
-                    <img className="user-profile-pic"src={user.fileLink} alt=""/>
+                    <img className="user-profile-pic"
+                      src={user.fileLink} 
+                      alt=""/>
                   </div>
 
                   <div>
                     <span className="name">{user ? user.fName : ''}</span>
                   </div>
+                </div>
+                
+                <div className="upload-pfp-container"> 
+                  <form className="pfp-upload" onSubmit={this.handleSubmitProfilePic}>
+                    <div className="pfp-btn-wrapper">
+                      <label className="pfp-btn"
+                        htmlFor="pfp-file">
+                        <FontAwesomeIcon className="pfp-btn-icon"
+                          icon="upload" />
+                        <input className="pfp-input"
+                          type="file"
+                          id="pfp-file"
+                          onChange={this.handleSelectProfilePic}
+                          accept="image/*"
+                        />
+                      </label>
+                    </div>
+                    <p className="pfpname">{profilePicFilename}</p>
+
+                    <button className="upload-pic-btn">Update profile pic</button>
+                  </form>
                 </div>
 
                 <div className="left-right">
@@ -395,10 +425,6 @@ class Profile extends React.Component {
                   </div>
                 </div>
               </div>
-
-              {/* <div className="right">
-                <span>Progress Photos</span>
-              </div> */}
 
               <div className="line"></div>
             </div>
