@@ -51,7 +51,6 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchUserProfile(this.props.match.params.userId)
       .then(action => this.props.fetchUserWeights(this.props.match.params.userId))
       .then(action => this.props.fetchProgressPic(this.props.match.params.userId));
@@ -253,9 +252,8 @@ class Profile extends React.Component {
                 <span>Upload Progress Photos</span>
                 <form onSubmit={this.handleSubmitProgressPic}>
                   <label className="upload-btn"
-                    // onClick={this.handleUploadClick}
-                    >
-                    <FontAwesomeIcon className="upload-btn" 
+                    htmlFor="file">
+                    <FontAwesomeIcon className="upload-btn-icon" 
                       icon="upload" />
                     <input className={this.state.uploadFile}
                       type="file"
@@ -300,7 +298,7 @@ class Profile extends React.Component {
                     </div>
                   </div>
 
-                  <button>Upload pic</button>
+                  <button className="upload-pic-btn">Upload pic</button>
                 </form>
               </div>
             </div>
@@ -309,7 +307,16 @@ class Profile extends React.Component {
       )
     }
 
-
+    let progressPics;
+    if (user && user.progressPics.length > 0) {
+      progressPics = user.progressPics.reverse().map(pic => (
+        <li key={pic._id}>
+          <img src={pic.fileLink} 
+            alt=""
+            className="each-pic"/>
+        </li>
+      ))
+    }
 
     return (
       <section className="profile">
@@ -369,8 +376,11 @@ class Profile extends React.Component {
               <div className="banner">
                 <span>Progress Photos</span>
               </div>
-              <div className="actual-photos">
 
+              <div className="actual-photos-container">
+                <ul className="actual-photos">
+                  {progressPics}
+                </ul>
               </div>
             </div>
           </div>

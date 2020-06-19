@@ -182,33 +182,58 @@ section.profile {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             margin-top: 20px;
 
             span {
               font-size: 24px;
             }
 
-            label.upload-btn:hover {
-              cursor: pointer;
-            }
+            form {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
 
-            label.upload-btn {
-              background-color: #efefef;
-              border: 1px solid rgb(206, 208, 212);
-              border-radius: 8px;
-              margin: 20px;
-              height: 50px;
-              width: 50px;
-
-              .upload-btn {
-                font-size: 28px;
-                position: relative;
-                top: 10px;
-                left: 12px;
+              label.upload-btn:hover {
+                cursor: pointer;
               }
-
-              input#file {
-                display: none;
+  
+              label.upload-btn {
+                display: block;
+                background-color: #efefef;
+                border: 1px solid rgb(206, 208, 212);
+                border-radius: 8px;
+                margin: 6px;
+                height: 30px;
+                width: 30px;
+  
+                .upload-btn-icon {
+                  font-size: 20px;
+                  position: relative;
+                  top: 4px;
+                  left: 5px;
+                }
+  
+                input#file {
+                  display: none;
+                }
+              }
+  
+              div.weight-date {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 7px 0px;
+                width: 195px;
+  
+                .weight-text {
+                  margin-right: 5px;
+                  font-size: 18px;
+                }
+              }
+  
+              .upload-pic-btn {
+                
               }
             }
           }
@@ -292,13 +317,40 @@ section.profile {
             font-size: 24px;
             cursor: pointer;
           }
-
         }
-        div.actual-photos {
+
+        div.actual-photos-container {
+          margin: 0;
+          padding: 0;
           border-left: 1px solid rgb(206, 208, 212);
           border-right: 1px solid rgb(206, 208, 212);
           height: 100%;
-          width: 100%;
+          width: 898px;
+          display: flex;
+          justify-content: center;
+
+          ul.actual-photos {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 150px 150px 150px 150px;
+            grid-gap: 0px 40px;
+            height: 100px;
+
+            li {
+              margin-top: 40px;
+              height: 150px;
+              width: 150px;
+              list-style: none;
+  
+              img.each-pic {
+                border-radius: 4px;
+                height: 150px;
+                width: 150px;
+              }
+            }
+          }
+          
         }
       }
     }
