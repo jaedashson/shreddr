@@ -100,7 +100,10 @@ class Profile extends React.Component {
     formData.append("file", this.state.progressPicFile);
 
     this.props.addNewProgressPic(formData, this.state.user)
-      .then(() => this.props.fetchProgressPic(this.props.match.params.userId));
+      .then(() => {
+        this.setState({ progressPicFile: null });
+        return this.props.fetchProgressPic(this.props.match.params.userId)
+      });
   }
 
   handleSelectFile(e) {
@@ -111,7 +114,10 @@ class Profile extends React.Component {
   }
 
   render() {
+    debugger
     const { currentUser, user, userBodyweights } = this.props;
+
+    const filename = this.state.progressPicFile ? this.state.progressPicFile.name : null;
 
     if (!user) {
       return null;
@@ -258,6 +264,10 @@ class Profile extends React.Component {
                       accept="image/*"
                     />
                   </label>
+
+                  <div className="filename-container">
+                    <p className="filename">{filename}</p>
+                  </div>
 
                   <div className="weight-date">
                     <span className="weight-text">Date: </span>
