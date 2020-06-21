@@ -318,7 +318,7 @@ class Profile extends React.Component {
                     <div className="weight-r2">
                       <select
                         className="weight-month"
-                        onChange={this.updateDate("month")}
+                        onChange={this.update("progressPicMonth")}
                         value={this.state.progressPicMonth}
                       >
                         {weightMonths}
@@ -327,7 +327,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.progressPicDay}
                         className="weight-day"
-                        onChange={this.updateDate("day")}
+                        onChange={this.update("progressPicDay")}
                         value={this.state.progressPicDay}
                       >
                         {weightDays}
@@ -336,7 +336,7 @@ class Profile extends React.Component {
                       <select
                         name={this.state.year}
                         className="weight-year"
-                        onChange={this.updateDate("year")}
+                        onChange={this.update("progressPicYear")}
                         value={this.state.progressPicYear}
                       >
                         {weightYears}
