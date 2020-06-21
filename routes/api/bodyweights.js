@@ -5,44 +5,20 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// // POST /api/bodyweights/users/:user_id/bodyweight
-// router.post(
-//     "/users/:user_id/bodyweight",
-//     passport.authenticate("jwt", { session: false }),
-//     (req, res) => {
-//         // validations, if any
-
-//         const dateArray = req.body.date.split("-");
-//         const year = parseInt(dateArray[0]);
-//         const month = parseInt(dateArray[1]);
-//         const date = parseInt(dateArray[2]);
-
-//         const newBodyweight = new Bodyweight({
-//             user: req.user.id,
-//             weight: req.body.weight,
-//             date: new Date(year, month, date)
-//         })
-
-//         newBodyweight.save().then(bodyweight => res.json(bodyweight));
-//     }
-// )
-
-
 // Route WITHOUT passport/jwt stuff
 // POST /api/bodyweights/:user_id
 router.post("/:user_id", (req, res) => {
-    // debugger
+    debugger
     const dateArray = req.body.date.split("-");
     const year = parseInt(dateArray[0]);
-    const month = parseInt(dateArray[1]);
+    const month = parseInt(dateArray[1]) - 1;
     const date = parseInt(dateArray[2]);
     const bodyweightDate = new Date(year, month, date);
-    // debugger
+    debugger
     Bodyweight.deleteMany({
         user: req.params.user_id,
         date: bodyweightDate
     }).then(() => {
-        // debugger
         const newBodyweight = new Bodyweight({
             user: req.params.user_id,
             weight: req.body.weight,

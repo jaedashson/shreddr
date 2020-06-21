@@ -37,14 +37,16 @@ router.post("/:user_id", upload.single("file"), (req, res) => {
     if (err) {
       res.status(500).json({ error: true, Message: error });
     } else {
+      debugger
       const dateArray = req.body.date.split("-");
       const year = parseInt(dateArray[0]);
       const month = parseInt(dateArray[1]) - 1;
       const date = parseInt(dateArray[2]);
-
+      const progressPicDate = new Date(year, month, date);
+      debugger
       const newProgressPic = new ProgressPic({
         user: req.params.user_id,
-        date: new Date(year, month, date),
+        date: progressPicDate,
         fileLink: s3FileURL + "/" + file.originalname,
         s3_key: params.Key
       });
