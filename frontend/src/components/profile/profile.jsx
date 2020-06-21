@@ -13,10 +13,9 @@ class Profile extends React.Component {
 
     let date = new Date();
     this.day = date.getDate();
-    this.month = date.getMonth() ;
+    this.month = date.getMonth() + 1;
     this.year = date.getFullYear();
 
-    
     const { currentUser, user, userBodyweights } = props;
     
     if (user && user.bodyweights) {
@@ -80,6 +79,7 @@ class Profile extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     let weight = {
       user: this.state.user,
@@ -90,9 +90,9 @@ class Profile extends React.Component {
     let day, month, year;
     let date = new Date();
     day = date.getDate();
-    month = date.getMonth();
+    month = date.getMonth() + 1;
     year = date.getFullYear();
-
+    debugger
     this.props.addNewWeight(weight)
       .then(() => {
         this.setState({
@@ -104,6 +104,7 @@ class Profile extends React.Component {
   }
 
   handleSubmitProgressPic(e) {
+    debugger
     e.preventDefault();
 
     if (!this.state.progressPicFile) {
@@ -114,7 +115,7 @@ class Profile extends React.Component {
     const formData = new FormData();
     formData.append("date", date);
     formData.append("file", this.state.progressPicFile);
-
+    debugger
     this.props.addNewProgressPic(formData, this.state.user)
       .then(() => {
         this.setState({ progressPicFile: null });
@@ -219,17 +220,17 @@ class Profile extends React.Component {
 
     let addWeightPhotos;
     if (currentUser && currentUser.id === this.props.match.params.userId) {
-      const years = []
+      const years = ["Year"]
       for (let i = 2020; i >= 2010; i--) {
         years.push(i);
       }
 
-      const days = []
+      const days = ["Day"]
       for (let i = 1; i <= 31; i++) {
         days.push(i);
       }
 
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const months = ["Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
       const weightYears = years.map(year => {
         return <option key={year} value={year}>{year}</option>
@@ -317,8 +318,8 @@ class Profile extends React.Component {
                     <div className="weight-r2">
                       <select
                         className="weight-month"
-                        onChange={this.updateDate("month")}
-                        value={this.state.date.split('-')[1]}
+                        onChange={this.update("progressPicMonth")}
+                        value={this.state.progressPicMonth}
                       >
                         {weightMonths}
                       </select>
@@ -326,8 +327,8 @@ class Profile extends React.Component {
                       <select
                         name={this.state.progressPicDay}
                         className="weight-day"
-                        onChange={this.updateDate("day")}
-                        value={this.state.date.split('-')[2]}
+                        onChange={this.update("progressPicDay")}
+                        value={this.state.progressPicDay}
                       >
                         {weightDays}
                       </select>
@@ -335,8 +336,8 @@ class Profile extends React.Component {
                       <select
                         name={this.state.year}
                         className="weight-year"
-                        onChange={this.updateDate("year")}
-                        value={this.state.date.split('-')[0]}
+                        onChange={this.update("progressPicYear")}
+                        value={this.state.progressPicYear}
                       >
                         {weightYears}
                       </select>
@@ -356,7 +357,7 @@ class Profile extends React.Component {
     if (user && user.progressPics.length > 0) {
       progressPics = user.progressPics.map(pic => {
         let date = new Date(pic.date);
-        let m = date.getMonth();
+        let m = date.getMonth() + 1;
         let d = date.getDate();
         let y = date.getFullYear();
         y = y.toString().slice(2);
