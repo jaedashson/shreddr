@@ -3,9 +3,9 @@
 ### Shreddr
 Shreddr is a web application that recommends workouts based on the equipment you have.
 
-Click [here](https://boiling-plateau-33508.herokuapp.com/#/) to launch Shreddr!
+Click [here](https://shreddrapp.herokuapp.com/#/) to launch Shreddr!
 
-[![splash](giphys/splash.png)](https://boiling-plateau-33508.herokuapp.com/#/)
+[![splash](giphys/splash.png)](https://shreddrapp.herokuapp.com/#/)
 
 ## Background and Overview 
 Because of COVID-19 related quarantines throughout the world, gyms are closed and people have had to rely on workouts at home to stay fit. Shreddr’s goal is to provide workout options to people with limited exercise equipment. It will maintain a database of exercises that users can use to generate workouts based on their fitness goals and the equipment that they have available. Users will also be able to keep track of their progress, such as bodyweight and lifts.
