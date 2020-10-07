@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
-const Bodyweight = require("../../models/Bodyweight")
+// const Bodyweight = require("../../models/Bodyweight")
 const bcrypt = require("bcryptjs");
 const keys = require('../../frontend/src/confg/keys');
 const jwt = require('jsonwebtoken');
@@ -17,7 +17,7 @@ var upload = multer({ storage: storage });
 
 //test route
 router.get("/test", (req, res) => {
-  res.json({ msg: "This is the user route dawg" });
+  res.json({ msg: "This is the user route" });
 });
 
 //get current user route
@@ -30,6 +30,7 @@ router.get(
 )
 
 //user registration route
+// Lots of boilerplate
 router.post("/register", (req, res) => {
   debugger
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -42,7 +43,7 @@ router.post("/register", (req, res) => {
   .then(user => {
     if (user) {
       return res.status(400).json({email: "A user is already registered with that email"});
-    } else {
+    } else { // Change to .catch
       const dateArray = req.body.dob.split("-");
       const year = parseInt(dateArray[0]);
       const month = parseInt(dateArray[1]);
@@ -57,12 +58,13 @@ router.post("/register", (req, res) => {
         gender: req.body.gender,
       })
 
+      // Hash and salt the password (boilerplate)
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
           newUser.save()
-            .then(user => res.json(user))
+            .then(user => res.json(user)) // Send json response (request complete)
             .catch(err => console.log(err))
         })
       })
@@ -83,7 +85,10 @@ router.post('/login', (req, res) => {
 
   User.findOne({ email: req.body.email })
     .then(user => {
+
+      // Is this unnecessary?
       if (!user) {
+        //console.log(user)
         return res.status(404).json({ login_email: "This dude does not exist." });
       }
 
@@ -100,9 +105,11 @@ router.post('/login', (req, res) => {
               date: user.date,
               bodyweights: user.bodyweights
             }
+
+            // Signs user in
             jwt.sign(
               payload,
-              keys.secretOrKey,
+              keys.secretOrKey, // 
               { expiresIn: 3600 },
               (err, token) => {
                 res.json({

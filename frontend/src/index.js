@@ -24,6 +24,7 @@ library.add(fab, faUser, faUserCircle, faUpload);
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
+  // Boilerplate
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
 
